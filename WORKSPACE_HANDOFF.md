@@ -1,6 +1,6 @@
 # Workspace Handoff
 
-Updated: 2026-04-24 18:30 CEST
+Updated: 2026-04-24 18:39 CEST
 
 ## Lane
 
@@ -31,11 +31,12 @@ Updated: 2026-04-24 18:30 CEST
 - site commit `d208627` was pushed to `medschooloutsider/gpt-md-site`, GitHub Pages finished building, and the live HTML includes `#why`, `#advantage`, `#specs`, and the proof modal trigger
 - site commit `bea0aa6` tracks the eight showcase/spec PNGs that the expanded homepage references; GitHub Pages finished rebuilding and all 11 homepage image URLs now return HTTP 200
 - correction commit `57a4a7a` removes the PDF-MD-derived `thymus`/spec/showcase assets from the GPT-MD homepage and untracks them from the public repo while leaving local files untouched
+- copy/image alignment commit `75a655c` makes Specs text-only, limits homepage images to five GPT-MD generated/real app assets, and rewrites captions so they describe exactly what the image is: real app capture, generated workflow visual, or generated App Store composition
 
 ## Left To Do
 
 - keep the live GPT-MD checkout URL, `HK$88` price, and support email synchronized with site copy and app metadata
-- no required homepage deployment work remains from the corrected GPT-MD-only image fix
+- no required homepage deployment work remains from the corrected GPT-MD-only image/copy alignment fix
 
 ## Waiting On
 
@@ -58,6 +59,7 @@ Updated: 2026-04-24 18:30 CEST
 - GitHub Pages status returned `built`, and live HTML at `https://medschooloutsider.github.io/gpt-md-site/` contains the new `#why`, `#advantage`, `#specs`, and `data-proof-open` markers.
 - 2026-04-24 broken image fix: direct live URL checks returned HTTP 200 for all 11 homepage images after commit `bea0aa6` and GitHub Pages rebuild.
 - 2026-04-24 asset correction: direct live HTML/URL checks after commit `57a4a7a` confirmed no `specs/`, `showcase/routing`, `showcase/markdown`, or `thymus` image references remain; all 11 remaining homepage image URLs return HTTP 200. Fresh browser screenshot was not captured because the previous CDP lane on `127.0.0.1:59947` was no longer open.
+- 2026-04-24 copy/image alignment: subagent audits classified safe assets and image-copy fit; after commit `75a655c`, GitHub Pages rebuilt and live parser checks confirmed 5 homepage images, all under `site-assets/generated/`, no PDF/thymus/spec/showcase bad refs, all image URLs HTTP 200, and zero `MarkEdit`/`PDF` text mentions on the homepage.
 
 ## Relevant Handoff Or Contract Files
 
