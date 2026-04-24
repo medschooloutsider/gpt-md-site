@@ -1,6 +1,6 @@
 # Workspace Handoff
 
-Updated: 2026-04-24 17:58 CEST
+Updated: 2026-04-24 18:00 CEST
 
 ## Lane
 
@@ -28,11 +28,12 @@ Updated: 2026-04-24 17:58 CEST
 - the homepage hero now uses a real GPT-MD app-window capture from the commercial QA app-surface harness instead of the icon-only visual; the site copy is stored at `site-assets/generated/gpt-md-app-workflow-window.png` with its capture sidecar JSON
 - the homepage now matches the PDF-MD page depth more closely with a Why section, Advantage comparison, screenshot grid, six-card Technical Specifications section, proof modal action, and EULA legal card
 - the generated workflow image is constrained as a bounded 16:9 figure beside the workflow steps instead of a full-width vertically dominant block
+- site commit `d208627` was pushed to `medschooloutsider/gpt-md-site`, GitHub Pages finished building, and the live HTML includes `#why`, `#advantage`, `#specs`, and the proof modal trigger
 
 ## Left To Do
 
 - keep the live GPT-MD checkout URL, `HK$88` price, and support email synchronized with site copy and app metadata
-- deploy the repo after the scope-parity layout update is committed
+- no required homepage deployment work remains from the scope-parity layout update
 
 ## Waiting On
 
@@ -52,6 +53,7 @@ Updated: 2026-04-24 17:58 CEST
 - 2026-04-24 grounded hero wiring used QA run `QA/runs/app-surface-qa/20260424_141602_surface-default` from the commercial QA lane; the harness passed 39/39 steps and produced a real app-window PNG capture at `site-assets/generated/gpt-md-app-workflow-window.png`.
 - Local browser review served the site on `127.0.0.1:8766` and captured `site_visual_review/gpt-md-grounded-hero-wiring-1440.png`.
 - 2026-04-24 scope-parity update passed `git diff --check`; local index asset reference check returned `missing []`; local browser review served the site on `127.0.0.1:8088` and captured desktop/mobile evidence at `site_visual_review/gpt-md-scope-parity-layout-1440.png` and `site_visual_review/gpt-md-scope-parity-layout-390.png`.
+- GitHub Pages status returned `built`, and live HTML at `https://medschooloutsider.github.io/gpt-md-site/` contains the new `#why`, `#advantage`, `#specs`, and `data-proof-open` markers.
 
 ## Relevant Handoff Or Contract Files
 
