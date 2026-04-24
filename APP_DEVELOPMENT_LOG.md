@@ -1,6 +1,6 @@
 # App Development Log
 
-Updated: 2026-04-24 17:58 CEST
+Updated: 2026-04-24 18:25 CEST
 
 ## Entries
 
@@ -11,3 +11,4 @@ Updated: 2026-04-24 17:58 CEST
 - 2026-04-23 19:31 CEST | gpt-md-advantage-proof | Added a dedicated Advantage section and proof panels to the public GPT-MD site so the page reads closer to the PDF-MD commercial pattern instead of a trimmed storefront.
 - 2026-04-24 14:51 CEST | gpt-md-marketing-diagnosis-rewrite | Rewrote the GPT-MD homepage hero, workflow, proof, and pricing copy around the 2026-04-24 marketing diagnosis: ChatGPT project tabs to selected responses to previewed Markdown output. Removed primary-page QA lane/process language, added a CSS three-step workflow hero, and repaired the site lane startup anchors so AppDev coordination readiness can pass.
 - 2026-04-24 17:58 CEST | gpt-md-scope-parity-layout | Expanded the GPT-MD homepage to match the PDF-MD page depth with Why, Advantage, screenshot grid, stronger Proof action, Technical Specifications, and EULA coverage. Reworked the workflow visual into a bounded 16:9 figure beside the step list so the generated image no longer dominates the viewport vertically. Validation passed `git diff --check`, local asset reference checks, and desktop/mobile browser screenshots at `docs/consultations/2026-04-24-gptmd-pdfmd-marketing-positioning/site_visual_review/gpt-md-scope-parity-layout-1440.png` and `gpt-md-scope-parity-layout-390.png`.
+- 2026-04-24 18:25 CEST | gpt-md-site-asset-tracking-fix | Fixed live broken homepage images after confirming the newly referenced showcase/spec PNGs were present locally but ignored by `.gitignore` and absent from the public repo. Added the eight referenced PNGs plus narrow ignore exceptions in commit `bea0aa6`; GitHub Pages rebuilt, and direct live checks returned HTTP 200 for all 11 homepage image URLs.
