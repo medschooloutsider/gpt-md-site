@@ -1,6 +1,6 @@
 # Workspace Handoff
 
-Updated: 2026-04-24 16:20 CEST
+Updated: 2026-04-24 17:58 CEST
 
 ## Lane
 
@@ -17,7 +17,7 @@ Updated: 2026-04-24 16:20 CEST
 
 - the public site repo now exists locally as a separate GPT-MD surface
 - landing page copy reflects the launch-ready GPT-MD message from the commercial docs
-- the page structure now uses dedicated What, Workflow, Proof, Buy, and Legal sections
+- the page structure now uses dedicated What, Why, Advantage, Workflow, Proof, Technical Specifications, Buy, and Legal sections
 - the prior Advantage/QA-heavy material has been folded into buyer-facing workflow and proof copy
 - the homepage hero is now rewritten around the diagnosis-approved workflow promise: ChatGPT project tabs to selected responses to previewed Markdown output
 - the top-of-page badges now emphasize buyer-facing workflow claims instead of support or release-lane details
@@ -26,16 +26,17 @@ Updated: 2026-04-24 16:20 CEST
 - privacy, terms, and proof pages are present
 - the site uses the GPT-MD app icon as the visual anchor
 - the homepage hero now uses a real GPT-MD app-window capture from the commercial QA app-surface harness instead of the icon-only visual; the site copy is stored at `site-assets/generated/gpt-md-app-workflow-window.png` with its capture sidecar JSON
+- the homepage now matches the PDF-MD page depth more closely with a Why section, Advantage comparison, screenshot grid, six-card Technical Specifications section, proof modal action, and EULA legal card
+- the generated workflow image is constrained as a bounded 16:9 figure beside the workflow steps instead of a full-width vertically dominant block
 
 ## Left To Do
 
 - keep the live GPT-MD checkout URL, `HK$88` price, and support email synchronized with site copy and app metadata
-- optionally generate a more polished GPT-MD marketing backplate from the grounded screenshot packet, then replace or supplement the current real app-window hero
-- deploy the repo once the launch target is decided
+- deploy the repo after the scope-parity layout update is committed
 
 ## Waiting On
 
-- grounded GPT-MD workflow screenshots for stronger hero/App Store visuals
+- none for the current homepage scope-parity update
 
 ## Latest Proof Or Test Evidence
 
@@ -50,6 +51,7 @@ Updated: 2026-04-24 16:20 CEST
 - `git diff --check` passed after the 2026-04-24 landing-page edit
 - 2026-04-24 grounded hero wiring used QA run `QA/runs/app-surface-qa/20260424_141602_surface-default` from the commercial QA lane; the harness passed 39/39 steps and produced a real app-window PNG capture at `site-assets/generated/gpt-md-app-workflow-window.png`.
 - Local browser review served the site on `127.0.0.1:8766` and captured `site_visual_review/gpt-md-grounded-hero-wiring-1440.png`.
+- 2026-04-24 scope-parity update passed `git diff --check`; local index asset reference check returned `missing []`; local browser review served the site on `127.0.0.1:8088` and captured desktop/mobile evidence at `site_visual_review/gpt-md-scope-parity-layout-1440.png` and `site_visual_review/gpt-md-scope-parity-layout-390.png`.
 
 ## Relevant Handoff Or Contract Files
 
