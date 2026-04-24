@@ -23,5 +23,5 @@ Open `index.html` in a browser or serve the folder with any static server.
 ## Publish Notes
 
 - keep the public site copy in sync with the Lemon Squeezy product
-- update the support email and checkout URL once the real product exists
+- keep the support email and checkout URL synchronized with the live product
 - do not let the site drift from the commercial QA lane

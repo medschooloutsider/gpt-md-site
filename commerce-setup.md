@@ -11,9 +11,12 @@ Updated: 2026-04-23
 
 - Product name: `GPT-MD`
 - Billing model: one-time purchase
+- Launch price: `HK$88.00`
 - Variant name: `Default`
 - License keys enabled: `On`
 - Hosted checkout sharing: `On`
+- Live checkout URL: `https://medout.lemonsqueezy.com/checkout/buy/40174261-ca0c-464d-b044-39bebae435b0`
+- Support email: `worldpresident1030@gmail.com`
 
 ## What The Site Should Say
 
@@ -25,8 +28,6 @@ Updated: 2026-04-23
 ## What Still Needs Wiring
 
 - real product page in Lemon Squeezy
-- final hosted checkout URL
-- final support email
 - final pricing and refund policy
 
 ## Sync Rule

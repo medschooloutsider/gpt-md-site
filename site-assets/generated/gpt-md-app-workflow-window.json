@@ -1,0 +1,17 @@
+{
+  "label": "GPT-MD app workflow after 39-step app-surface harness",
+  "captured_at": "2026-04-24T16:18:26.793123+02:00",
+  "output_png": "/Volumes/DATA_ARCHIVE/Hub_Network/20_App_And_Tool_Hubs/AppDev_Hub/Commercialisation_Hub/apps/GPT-MD/qa-signoff/GPT-MD-commercial-qa/QA/runs/app-surface-qa/20260424_141602_surface-default/png-captures/gpt-md-app-workflow-window.png",
+  "window": {
+    "id": 13146,
+    "owner": "GPT-MD",
+    "name": "GPT-MD",
+    "bounds": {
+      "x": "68",
+      "y": "166",
+      "width": "1920",
+      "height": "980"
+    }
+  },
+  "method": "CGWindowListCopyWindowInfo + screencapture -l"
+}
