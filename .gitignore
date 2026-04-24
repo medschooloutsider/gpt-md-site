@@ -9,4 +9,16 @@ site-assets/sample-output.md
 site-assets/sample-source.txt
 site-assets/showcase/*
 !site-assets/showcase/
+!site-assets/showcase/markdown-editor-clean.png
 !site-assets/showcase/gpt-md-source-clean.png
+!site-assets/showcase/routing-clean.png
+!site-assets/specs/
+site-assets/specs/*
+!site-assets/specs/focus/
+site-assets/specs/focus/*
+!site-assets/specs/focus/workspace-assignment-sheet-focus.png
+!site-assets/specs/focus/workspace-diagnostics-focus.png
+!site-assets/specs/focus/workspace-exported-preview-focus.png
+!site-assets/specs/focus/workspace-main-focus.png
+!site-assets/specs/focus/workspace-markdown-editor-focus.png
+!site-assets/specs/focus/workspace-quick-preview-focus.png
