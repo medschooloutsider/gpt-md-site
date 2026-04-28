@@ -575,6 +575,10 @@ main {
   margin-top: 1.8rem;
 }
 
+.proof-metrics-key {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .proof-metric {
   padding-top: 1rem;
 }
@@ -767,13 +771,15 @@ main {
 }
 
 .proof-modal {
-  width: min(1280px, calc(100% - 2rem));
-  max-width: 1280px;
-  height: min(90svh, 920px);
+  width: min(920px, calc(100% - 2rem));
+  max-width: 920px;
+  max-height: min(90svh, 820px);
   padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.10);
-  border-radius: 1.8rem;
-  background: #10151b;
+  border-radius: 1.35rem;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(68, 215, 196, 0.16), transparent 30%),
+    #10151b;
   color: #f7f2e8;
   box-shadow: 0 34px 120px rgba(8, 12, 16, 0.48);
 }
@@ -785,10 +791,8 @@ main {
 
 .proof-modal-shell {
   display: grid;
-  grid-template-rows: auto auto minmax(0, 1fr) auto;
-  gap: 1rem;
-  height: 100%;
-  padding: 1.25rem;
+  gap: 1.15rem;
+  padding: 1.35rem;
 }
 
 .proof-modal-header {
@@ -800,9 +804,9 @@ main {
 
 .proof-modal-header h2 {
   margin: 0;
-  max-width: 14ch;
-  font-size: 3rem;
-  line-height: 0.98;
+  max-width: 18ch;
+  font-size: 2.45rem;
+  line-height: 1.02;
   letter-spacing: 0;
 }
 
@@ -822,26 +826,67 @@ main {
   color: #f7f2e8;
   font: inherit;
   cursor: pointer;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
 }
 
-.proof-modal-frame-wrap {
-  min-height: 0;
-  overflow: hidden;
+.proof-modal-close:hover,
+.proof-modal-close:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(146, 240, 223, 0.5);
+  background: rgba(146, 240, 223, 0.10);
+}
+
+.proof-modal-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.proof-modal-grid article,
+.proof-modal-scope > div {
+  padding: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.10);
-  border-radius: 1.35rem;
-  background: #0a0f14;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.045);
 }
 
-.proof-modal-frame {
+.proof-modal-grid strong {
   display: block;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  background: #0a0f14;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1.25rem;
+  color: var(--accent);
+}
+
+.proof-modal-grid span,
+.proof-modal-scope p {
+  display: block;
+  margin-top: 0.55rem;
+  color: rgba(247, 242, 232, 0.72);
+  line-height: 1.6;
+}
+
+.proof-modal-scope {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.proof-modal-scope h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.proof-modal-scope p {
+  margin-bottom: 0;
 }
 
 .proof-modal-footer {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   justify-content: flex-end;
 }
 
@@ -926,7 +971,8 @@ main {
 
   .proof-modal {
     width: min(calc(100% - 1rem), 1280px);
-    height: min(94svh, 920px);
+    max-height: min(94svh, 920px);
+    overflow-y: auto;
   }
 
   .proof-modal-shell {
@@ -940,5 +986,10 @@ main {
   .proof-modal-header h2 {
     max-width: none;
     font-size: 2.2rem;
+  }
+
+  .proof-modal-grid,
+  .proof-modal-scope {
+    grid-template-columns: 1fr;
   }
 }

@@ -1,6 +1,6 @@
 # Workspace Handoff
 
-Updated: 2026-04-24 18:39 CEST
+Updated: 2026-04-28 21:29 CEST
 
 ## Lane
 
@@ -32,11 +32,13 @@ Updated: 2026-04-24 18:39 CEST
 - site commit `bea0aa6` tracks the eight showcase/spec PNGs that the expanded homepage references; GitHub Pages finished rebuilding and all 11 homepage image URLs now return HTTP 200
 - correction commit `57a4a7a` removes the PDF-MD-derived `thymus`/spec/showcase assets from the GPT-MD homepage and untracks them from the public repo while leaving local files untouched
 - copy/image alignment commit `75a655c` makes Specs text-only, limits homepage images to five GPT-MD generated/real app assets, and rewrites captions so they describe exactly what the image is: real app capture, generated workflow visual, or generated App Store composition
+- `export-benchmarking.html` is now a buyer-facing proof page instead of an internal QA memo: it states the current checks, scope, weak-fit cases, live store state, and App Store Connect as the next proof slice
+- the homepage proof popup is now a compact summary modal with four proof facts and scope boundaries; it no longer embeds the full proof page in an iframe
 
 ## Left To Do
 
 - keep the live GPT-MD checkout URL, `HK$88` price, and support email synchronized with site copy and app metadata
-- no required homepage deployment work remains from the corrected GPT-MD-only image/copy alignment fix
+- deploy the proof-page and proof-modal refresh to GitHub Pages, then verify the live `export-benchmarking.html` URL after Pages rebuilds
 
 ## Waiting On
 
@@ -60,6 +62,7 @@ Updated: 2026-04-24 18:39 CEST
 - 2026-04-24 broken image fix: direct live URL checks returned HTTP 200 for all 11 homepage images after commit `bea0aa6` and GitHub Pages rebuild.
 - 2026-04-24 asset correction: direct live HTML/URL checks after commit `57a4a7a` confirmed no `specs/`, `showcase/routing`, `showcase/markdown`, or `thymus` image references remain; all 11 remaining homepage image URLs return HTTP 200. Fresh browser screenshot was not captured because the previous CDP lane on `127.0.0.1:59947` was no longer open.
 - 2026-04-24 copy/image alignment: subagent audits classified safe assets and image-copy fit; after commit `75a655c`, GitHub Pages rebuilt and live parser checks confirmed 5 homepage images, all under `site-assets/generated/`, no PDF/thymus/spec/showcase bad refs, all image URLs HTTP 200, and zero `MarkEdit`/`PDF` text mentions on the homepage.
+- 2026-04-28 proof refresh: `git diff --check` passed; local HTML asset-reference check returned `missing []` for `index.html` and `export-benchmarking.html`; local browser screenshots were captured at `site_visual_review/gpt-md-proof-page-redesign-1440.png`, `gpt-md-proof-page-redesign-390.png`, `gpt-md-proof-modal-redesign-1440.png`, and `gpt-md-proof-modal-redesign-390.png`; modal verification confirmed it opens and contains no iframe.
 
 ## Relevant Handoff Or Contract Files
 

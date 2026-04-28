@@ -324,14 +324,14 @@
       </div>
       <div class="proof-actions">
         <div class="proof-callout">
-          <p class="proof-callout-label">Need the evidence behind the claim?</p>
+          <p class="proof-callout-label">Check the proof before you buy.</p>
           <p class="proof-callout-copy">
-            Open the proof overview for the launch-readiness evidence, export benchmarking notes, and current commercial sweep boundaries.
+            See the tested Chrome paths, packaged Mac app QA, export-review scope, and current store status.
           </p>
         </div>
         <div class="link-row">
           <button class="button button-secondary" type="button" data-proof-open>
-            Open Proof Overview
+            View Proof Summary
           </button>
         </div>
       </div>
@@ -426,7 +426,7 @@
         <article class="legal-card">
           <h3>Proof</h3>
           <p>The proof page summarizes the launch-readiness evidence behind the export workflow.</p>
-          <a href="./export-benchmarking.html">Open Proof Overview</a>
+          <a href="./export-benchmarking.html">Open Proof</a>
         </article>
         <article class="legal-card">
           <h3>EULA</h3>
@@ -443,27 +443,51 @@
     <div class="proof-modal-shell">
       <div class="proof-modal-header">
         <div>
-          <p class="eyebrow">Proof Overview</p>
-          <h2 id="proof-modal-title">Launch evidence and export credibility.</h2>
+          <p class="eyebrow">Proof</p>
+          <h2 id="proof-modal-title">The current checks support a narrow claim.</h2>
         </div>
         <button class="proof-modal-close" type="button" data-proof-close aria-label="Close proof overview">
           Close
         </button>
       </div>
       <p class="proof-modal-copy">
-        This panel opens the public proof page in place, so the product page can stay visible while the retained export evidence is reviewed.
+        GPT-MD is tested around one buyer workflow: collect ChatGPT project output,
+        choose the responses that matter, preview Markdown, and export from the Mac app.
       </p>
-      <div class="proof-modal-frame-wrap">
-        <iframe
-          class="proof-modal-frame"
-          src="./export-benchmarking.html"
-          title="GPT-MD proof overview"
-          loading="lazy"
-        ></iframe>
+      <div class="proof-modal-grid" aria-label="GPT-MD proof summary">
+        <article>
+          <strong>11/11</strong>
+          <span>Timed unit suite passed in the commercial QA sweep.</span>
+        </article>
+        <article>
+          <strong>3 Chrome paths</strong>
+          <span>Managed Chrome, normal Chrome, and managed Canary extraction passed.</span>
+        </article>
+        <article>
+          <strong>39/39</strong>
+          <span>Packaged app-surface QA passed against the rebuilt Mac app.</span>
+        </article>
+        <article>
+          <strong>Live store</strong>
+          <span>The HK$88 Lemon checkout is published with current GPT-MD media.</span>
+        </article>
+      </div>
+      <div class="proof-modal-scope">
+        <div>
+          <h3>Covered</h3>
+          <p>Supported ChatGPT project capture, response selection, preview, export, and direct-store delivery.</p>
+        </div>
+        <div>
+          <h3>Outside the claim</h3>
+          <p>Cloud sync, generic scraping, team wiki workflows, and automatic writing without review.</p>
+        </div>
       </div>
       <div class="proof-modal-footer">
+        <a class="button button-primary" href="./export-benchmarking.html">
+          Open Full Proof
+        </a>
         <button class="button button-secondary" type="button" data-proof-close>
-          Close Overview
+          Close
         </button>
       </div>
     </div>

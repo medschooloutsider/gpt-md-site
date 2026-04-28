@@ -1,6 +1,6 @@
 # App Development Log
 
-Updated: 2026-04-24 18:39 CEST
+Updated: 2026-04-28 21:29 CEST
 
 ## Entries
 
@@ -14,3 +14,4 @@ Updated: 2026-04-24 18:39 CEST
 - 2026-04-24 18:25 CEST | gpt-md-site-asset-tracking-fix | Fixed live broken homepage images after confirming the newly referenced showcase/spec PNGs were present locally but ignored by `.gitignore` and absent from the public repo. Added the eight referenced PNGs plus narrow ignore exceptions in commit `bea0aa6`; GitHub Pages rebuilt, and direct live checks returned HTTP 200 for all 11 homepage image URLs.
 - 2026-04-24 18:30 CEST | gpt-md-remove-pdf-derived-assets | Corrected the asset-tracking fix after user review showed the newly tracked showcase/spec images were PDF-MD-derived `thymus` workflow screenshots, not GPT-MD marketing assets. Removed those references from the GPT-MD homepage, untracked the eight bad PNGs from the public repo while leaving local files untouched, and pushed commit `57a4a7a`. GitHub Pages rebuilt; live HTML now references only generated GPT-MD assets and the real GPT-MD app-window capture, contains no `specs/`, `showcase/routing`, `showcase/markdown`, or `thymus` image paths, and all 11 remaining image URLs return HTTP 200.
 - 2026-04-24 18:39 CEST | gpt-md-copy-image-alignment | Used two read-only subagent audits to classify GPT-MD assets and homepage image-to-copy fit. Updated the homepage in commit `75a655c` so Specs is text-only, visual captions identify real app capture vs generated workflow/marketing composition, and MarkEdit/PDF-adjacent copy was removed where not directly visible. GitHub Pages rebuilt; live parser check confirms 5 homepage images, all under `site-assets/generated/`, no `specs/`, `showcase/routing`, `showcase/markdown`, or `thymus` image paths, all image URLs HTTP 200, and zero `MarkEdit`/`PDF` text mentions on the homepage.
+- 2026-04-28 21:29 CEST | gpt-md-proof-page-and-modal-refresh | Rewrote `export-benchmarking.html` from internal QA/process language into a buyer-facing proof page with current checks: 11/11 timed unit tests, three Chrome extraction paths, 39/39 packaged app-surface QA, HK$88 live checkout, and explicit scope boundaries. Replaced the homepage proof popup iframe with a compact proof summary modal. Validation passed `git diff --check`, local static reference checks for `index.html` and `export-benchmarking.html`, local browser render screenshots for desktop/mobile page and modal, and modal verification confirmed zero iframe usage.
