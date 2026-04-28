@@ -38,7 +38,7 @@ Updated: 2026-04-28 21:29 CEST
 ## Left To Do
 
 - keep the live GPT-MD checkout URL, `HK$88` price, and support email synchronized with site copy and app metadata
-- deploy the proof-page and proof-modal refresh to GitHub Pages, then verify the live `export-benchmarking.html` URL after Pages rebuilds
+- no required deployment work remains for the proof-page and proof-modal refresh; content commit `552aa94` and metadata-ignore commit `ae4ed61` are pushed to `medschooloutsider/gpt-md-site`
 
 ## Waiting On
 
@@ -62,7 +62,7 @@ Updated: 2026-04-28 21:29 CEST
 - 2026-04-24 broken image fix: direct live URL checks returned HTTP 200 for all 11 homepage images after commit `bea0aa6` and GitHub Pages rebuild.
 - 2026-04-24 asset correction: direct live HTML/URL checks after commit `57a4a7a` confirmed no `specs/`, `showcase/routing`, `showcase/markdown`, or `thymus` image references remain; all 11 remaining homepage image URLs return HTTP 200. Fresh browser screenshot was not captured because the previous CDP lane on `127.0.0.1:59947` was no longer open.
 - 2026-04-24 copy/image alignment: subagent audits classified safe assets and image-copy fit; after commit `75a655c`, GitHub Pages rebuilt and live parser checks confirmed 5 homepage images, all under `site-assets/generated/`, no PDF/thymus/spec/showcase bad refs, all image URLs HTTP 200, and zero `MarkEdit`/`PDF` text mentions on the homepage.
-- 2026-04-28 proof refresh: `git diff --check` passed; local HTML asset-reference check returned `missing []` for `index.html` and `export-benchmarking.html`; local browser screenshots were captured at `site_visual_review/gpt-md-proof-page-redesign-1440.png`, `gpt-md-proof-page-redesign-390.png`, `gpt-md-proof-modal-redesign-1440.png`, and `gpt-md-proof-modal-redesign-390.png`; modal verification confirmed it opens and contains no iframe.
+- 2026-04-28 proof refresh: `git diff --check` passed; local HTML asset-reference check returned `missing []` for `index.html` and `export-benchmarking.html`; local browser screenshots were captured at `site_visual_review/gpt-md-proof-page-redesign-1440.png`, `gpt-md-proof-page-redesign-390.png`, `gpt-md-proof-modal-redesign-1440.png`, and `gpt-md-proof-modal-redesign-390.png`; modal verification confirmed it opens and contains no iframe. GitHub Pages served the new live proof page copy at `https://medschooloutsider.github.io/gpt-md-site/export-benchmarking.html` after content commit `552aa94`.
 
 ## Relevant Handoff Or Contract Files
 
