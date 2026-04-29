@@ -1,6 +1,6 @@
 # App Development Log
 
-Updated: 2026-04-29 02:12 CEST
+Updated: 2026-04-29 12:10 CEST
 
 ## Entries
 
@@ -18,3 +18,4 @@ Updated: 2026-04-29 02:12 CEST
 - 2026-04-29 01:46 CEST | gpt-md-mcmaster-three-tab-rewrite | Replaced the GPT-MD homepage with a McMaster-Carr-inspired three-tab static structure: Introduction, Technical Specification, and Sales & Support. Rewrote `site.css` around a compact catalogue/tab visual system, replaced `eula.html` with a real placeholder EULA page, and cleaned `terms.html` plus `privacy.html` so they no longer read as internal draft notes. Validation passed coordination, master-plan, and scope gates; `git diff --check`; static link/reference checks for `index.html`, `terms.html`, `privacy.html`, and `eula.html`; forbidden old-section/internal-copy grep; and local Playwright render at `http://127.0.0.1:8765/index.html` for 1440px desktop and 390px mobile.
 - 2026-04-29 01:58 CEST | gpt-md-legal-nav-palette-followup | Used `/Users/siumanshermanchan/Downloads/GPTMD Website Draft.md` to fill the EULA page and expand Terms/Privacy without bracketed effective-date, developer-name, or jurisdiction placeholders. Shifted the site palette toward white/cool grey while retaining the yellow top banner, added cross-page navigation so every public page can reach the other pages and homepage sections, and set non-anchor page/support links to open in a new tab. Validation passed `git diff --check`, static link/reference checks, target checks for all non-anchor links, placeholder/draft grep, and Playwright desktop/mobile renders.
 - 2026-04-29 02:12 CEST | gpt-md-buy-link-wiring | Replaced the placeholder `Buy / Download GPT-MD` CTA with the recorded live GPT-MD Lemon Squeezy checkout URL `https://medout.lemonsqueezy.com/checkout/buy/40174261-ca0c-464d-b044-39bebae435b0` and removed the placeholder button label styling.
+- 2026-04-29 12:10 CEST | gpt-md-gallery-assets | Classified the four `12_02_* PM` selected images as GPT-MD assets, copied them into `site-assets/gallery/`, and added a captionless image-only gallery to the Introduction panel. Validation passed `git diff --check`, local link/image reference checks, new-tab target checks, and local Playwright render verification with four gallery images and no horizontal overflow.
