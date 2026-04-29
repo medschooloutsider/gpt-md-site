@@ -3,540 +3,263 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GPT-MD | Med School Outsider</title>
+  <title>GPT-MD | ChatGPT responses to Markdown</title>
   <meta
     name="description"
-    content="GPT-MD is a native macOS app for selecting, reviewing, editing, and exporting ChatGPT project output as clean Markdown."
+    content="GPT-MD is a native macOS SwiftUI app for selecting, rearranging, editing, previewing, and exporting ChatGPT responses as Markdown."
   >
+  <meta property="og:title" content="GPT-MD">
+  <meta property="og:description" content="Select, rearrange, edit, and export ChatGPT responses as Markdown.">
+  <meta property="og:type" content="website">
   <link rel="icon" type="image/png" href="./favicon.png?v=20260423a">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
   <link rel="stylesheet" href="./site.css">
 </head>
 <body>
+  <a class="skip-link" href="#content">Skip to content</a>
+
   <header class="site-header">
-    <a class="brand" href="#top">GPT-MD</a>
-    <nav class="site-nav" aria-label="Primary">
-      <a href="#what">What</a>
-      <a href="#why">Why</a>
-      <a href="#advantage">Advantage</a>
-      <a href="#workflow">Workflow</a>
-      <a href="#proof">Proof</a>
-      <a href="#specs">Specs</a>
-      <a href="#buy">Buy</a>
+    <a class="brand" href="./index.html" target="_blank" rel="noreferrer" aria-label="GPT-MD home">
+      <span class="brand-mark">GPT</span>
+      <span>GPT-MD</span>
+    </a>
+    <nav class="tabs" aria-label="Primary">
+      <a href="#introduction">Introduction</a>
+      <a href="#technical-specification">Technical Specification</a>
+      <a href="#sales-support">Sales &amp; Support</a>
+    </nav>
+    <nav class="page-nav" aria-label="All pages">
+      <a href="./index.html" target="_blank" rel="noreferrer">Home</a>
+      <a href="./terms.html" target="_blank" rel="noreferrer">Terms</a>
+      <a href="./privacy.html" target="_blank" rel="noreferrer">Privacy</a>
+      <a href="./eula.html" target="_blank" rel="noreferrer">EULA</a>
+      <a href="mailto:worldpresident1030@gmail.com" target="_blank" rel="noreferrer">Support</a>
     </nav>
   </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">Native macOS app</p>
-        <h1>Turn ChatGPT project output into Markdown you can actually review.</h1>
-        <p class="lede">
-          Scan Chrome ChatGPT tabs, select the responses you want, normalize math when it
-          helps, edit the preview, and export clean Markdown for your Mac editor without rebuilding
-          the same notes by hand.
-        </p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="https://medout.lemonsqueezy.com/checkout/buy/40174261-ca0c-464d-b044-39bebae435b0" target="_blank" rel="noreferrer">Buy GPT-MD</a>
-          <a class="button button-secondary" href="./export-benchmarking.html">Read Proof</a>
-        </div>
-        <div class="hero-meta" aria-label="Launch highlights">
-          <div>
-            <span>Platform</span>
-            <strong>Native macOS</strong>
-          </div>
-          <div>
-            <span>Source</span>
-            <strong>Chrome workflows</strong>
-          </div>
-          <div>
-            <span>Review</span>
-            <strong>Preview and edit</strong>
-          </div>
-          <div>
-            <span>Math</span>
-            <strong>LaTeX cleanup</strong>
-          </div>
-          <div>
-            <span>Export</span>
-            <strong>Clean Markdown</strong>
-          </div>
-        </div>
+  <main id="content" class="catalog-shell">
+    <section class="tab-panel intro-panel" id="introduction" aria-labelledby="intro-title">
+      <div class="panel-header">
+        <p class="kicker">Native macOS SwiftUI app</p>
+        <h1 id="intro-title">GPT-MD</h1>
+        <p class="subtitle">Select, rearrange, edit, and export ChatGPT responses as Markdown.</p>
       </div>
 
-      <div class="hero-visual" aria-label="GPT-MD product visual">
-        <div class="hero-frame">
-          <img
-            class="hero-image"
-            src="./site-assets/generated/gptmd-website-hero-backplate.png"
-            alt="Generated GPT-MD hero visual grounded in the real app window, showing ChatGPT project material resolving into selected responses, Markdown preview, and completed export."
-          >
-          <div class="hero-frame-note">
-            <span>Workflow-first export</span>
-            <strong>Source, selected responses, preview, and export status stay visible.</strong>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="what">
-      <div class="section-heading">
-        <p class="eyebrow">What</p>
-        <h2>A focused Mac app for turning useful ChatGPT responses into durable notes.</h2>
-      </div>
-      <div class="two-column">
-        <p>
-          GPT-MD is built for people who gather research, drafts, study material, and
-          project output in ChatGPT but do not want to copy one answer at a time into a
-          Markdown editor.
-        </p>
-        <p>
-          The app keeps the workflow narrow: find the supported browser material, select
-          the responses worth keeping, preview and clean the Markdown, then send the result
-          into a normal Mac writing workflow.
-        </p>
-      </div>
-      <div class="feature-grid feature-grid-tight">
-        <article>
-          <h3>Select only what matters</h3>
-          <p>Work from ChatGPT project output without dragging every answer into the final document.</p>
-        </article>
-        <article>
-          <h3>Review before it leaves</h3>
-          <p>Use the preview and editing step to catch bad structure before the export becomes your source of truth.</p>
-        </article>
-        <article>
-          <h3>Finish in Markdown</h3>
-          <p>Send clean Markdown into the writing, citation, versioning, and cleanup work that comes next.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="why">
-      <div class="section-heading">
-        <p class="eyebrow">Why</p>
-        <h2>Built because good ChatGPT work often gets lost between browser tabs, duplicates, and manual cleanup.</h2>
-      </div>
-      <div class="feature-grid">
-        <article>
-          <h3>ChatGPT projects sprawl</h3>
-          <p>Useful answers sit beside drafts, restarts, detours, and partial attempts across multiple tabs and windows.</p>
-        </article>
-        <article>
-          <h3>Copy and paste breaks review</h3>
-          <p>Manual copying turns a review task into formatting work, especially when tables, code blocks, headings, and math are mixed together.</p>
-        </article>
-        <article>
-          <h3>Export needs judgment</h3>
-          <p>The final document should contain selected responses, not every message that happened to appear in a long thread.</p>
-        </article>
-        <article>
-          <h3>Markdown is the durable target</h3>
-          <p>Once the useful material is in Markdown, it can be edited, versioned, searched, quoted, and folded into normal writing tools.</p>
-        </article>
-        <article>
-          <h3>Math needs a cleanup pass</h3>
-          <p>When ChatGPT output mixes plain text formulas with markdown, optional LaTeX normalization helps the export survive downstream editing.</p>
-        </article>
-        <article>
-          <h3>The review loop should stay local</h3>
-          <p>GPT-MD keeps selection, preview, and export visible in a Mac app instead of spreading the final check across browser tabs.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="advantage">
-      <div class="section-heading">
-        <p class="eyebrow">Advantage</p>
-        <h2>What GPT-MD adds beyond saving a conversation transcript.</h2>
-      </div>
-      <div class="two-column">
-        <p>
-          A raw transcript preserves too much and explains too little. GPT-MD is built
-          around the moment after a ChatGPT project has produced useful material: which
-          answers belong in the final file, which ones should stay behind, and what the
-          Markdown will look like before it leaves the app.
-        </p>
-        <p>
-          The app gives the workflow a concrete Mac surface: browser session discovery,
-          grouped response review, optional formatting cleanup, styled or plain preview,
-          and a direct handoff into Markdown-centered work.
-        </p>
-      </div>
-      <div class="feature-grid">
-        <article>
-          <h3>It is selection-first</h3>
-          <p>Responses are reviewed and chosen before export, so the final file is not a blind archive of the whole thread.</p>
-        </article>
-        <article>
-          <h3>It keeps context visible</h3>
-          <p>Windows, tabs, responses, preview, and export controls stay in one workspace while you decide what to keep.</p>
-        </article>
-        <article>
-          <h3>It previews the final shape</h3>
-          <p>Styled and plain preview modes make the Markdown structure inspectable before the file becomes your source of truth.</p>
-        </article>
-        <article>
-          <h3>It handles grouped output</h3>
-          <p>Long ChatGPT projects can be treated as sets of windows, tabs, and responses instead of one long scroll.</p>
-        </article>
-        <article>
-          <h3>It supports math cleanup</h3>
-          <p>Optional normalization helps formulas and lightweight math notation survive the trip into a real Markdown editor.</p>
-        </article>
-        <article>
-          <h3>It ends in a normal file</h3>
-          <p>The output is Markdown that can move into the rest of your Mac writing workflow.</p>
-        </article>
-      </div>
-      <div class="screenshot-grid">
-        <figure class="screenshot-card">
-          <img
-            src="./site-assets/generated/gpt-md-app-workflow-window.png"
-            alt="GPT-MD app window showing browser windows, tabs, selected responses, Markdown preview, and export controls."
-          >
-          <figcaption>
-            Real GPT-MD app capture: browser windows, grouped responses, Markdown preview, and export status are visible together.
-          </figcaption>
-        </figure>
-        <figure class="screenshot-card">
-          <img
-            src="./site-assets/generated/gptmd-workflow-transformation.png"
-            alt="Generated GPT-MD workflow visual showing raw ChatGPT output becoming selected, previewed, export-ready Markdown."
-          >
-          <figcaption>
-            Generated workflow visual: raw ChatGPT material, GPT-MD review, and export-ready Markdown are shown as the three stages.
-          </figcaption>
-        </figure>
-        <figure class="screenshot-card">
-          <img
-            src="./site-assets/generated/gptmd-app-store-backplate-set.png"
-            alt="Generated GPT-MD App Store visual grounded in the app workflow, showing selected responses and Markdown export."
-          >
-          <figcaption>
-            Generated App Store composition: a store-ready visual built from the GPT-MD selection, preview, and Markdown export story.
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="section section-accent" id="workflow">
-      <div class="section-heading">
-        <p class="eyebrow">Workflow</p>
-        <h2>Preview first, then export clean Markdown.</h2>
-      </div>
-      <div class="workflow-layout">
-        <ol class="workflow">
-          <li>
-            <span class="workflow-step">01</span>
-            <div>
-              <h3>Scan ChatGPT project tabs</h3>
-              <p>Start from the browser sessions where the source material already lives.</p>
-            </div>
-          </li>
-          <li>
-            <span class="workflow-step">02</span>
-            <div>
-              <h3>Select the responses you want</h3>
-              <p>Keep the useful answers and leave behind the drafts, duplicates, and side trails.</p>
-            </div>
-          </li>
-          <li>
-            <span class="workflow-step">03</span>
-            <div>
-              <h3>Preview, edit, and normalize</h3>
-              <p>Review the Markdown shape first, with math cleanup available when mixed formatting needs help.</p>
-            </div>
-          </li>
-          <li>
-            <span class="workflow-step">04</span>
-            <div>
-              <h3>Export clean Markdown</h3>
-              <p>Move the final Markdown into a normal Mac writing workflow instead of keeping your notes trapped in a browser thread.</p>
-            </div>
-          </li>
-        </ol>
-        <figure class="workflow-showcase">
-          <img
-            src="./site-assets/generated/gptmd-workflow-transformation.png"
-            alt="GPT-MD workflow visual showing raw ChatGPT output, review and selection inside GPT-MD, and export-ready Markdown."
-          >
-          <figcaption>
-            Generated workflow visual: raw project output, grouped response review, styled preview, and export-ready Markdown are presented as one controlled flow.
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="section" id="proof">
-      <div class="section-heading">
-        <p class="eyebrow">Proof</p>
-        <h2>Designed for reviewable output, not a blind scrape.</h2>
-      </div>
-      <div class="proof-hero">
-        <div class="proof-panel">
-          <p class="eyebrow">Control</p>
+      <div class="intro-grid">
+        <article class="summary-card">
           <p>
-            Choose which responses become part of the export instead of treating the whole
-            conversation as one undifferentiated block of text.
+            GPT-MD is a native macOS SwiftUI app for turning useful ChatGPT outputs into clean,
+            editable Markdown documents.
           </p>
-        </div>
-        <div class="proof-panel">
-          <p class="eyebrow">Result</p>
-          <p>
-            Preview the Markdown before it moves downstream, then keep writing in a
-            Markdown-first workflow.
-          </p>
-        </div>
-      </div>
-      <div class="proof-metrics proof-metrics-wide" aria-label="Launch summary">
-        <div class="proof-metric">
-          <strong>Native app</strong>
-          <span>Desktop-first workflow on macOS, not a generic upload form.</span>
-        </div>
-        <div class="proof-metric">
-          <strong>Chrome source support</strong>
-          <span>Built around the browser surface where ChatGPT project work happens.</span>
-        </div>
-        <div class="proof-metric">
-          <strong>Preview before Markdown</strong>
-          <span>Keep the review loop inside the app before the Markdown goes downstream.</span>
-        </div>
-      </div>
-      <div class="feature-grid">
-        <article>
-          <h3>Selection evidence</h3>
-          <p>Exports are based on selected windows, tabs, and responses, so the final Markdown can be traced back to the choices made in the app.</p>
         </article>
-        <article>
-          <h3>Preview evidence</h3>
-          <p>The generated Markdown is visible before handoff, including headings, tables, code blocks, and math cleanup effects.</p>
-        </article>
-        <article>
-          <h3>Export evidence</h3>
-          <p>The app exposes export completion state and sends the final file into a normal editor workflow for continued review.</p>
+
+        <article class="requirements-card">
+          <h2>Requirement note</h2>
+          <p>GPT-MD works with ChatGPT open in Google Chrome.</p>
+          <p>For export, MarkEdit must be installed.</p>
         </article>
       </div>
-      <div class="proof-actions">
-        <div class="proof-callout">
-          <p class="proof-callout-label">Check the proof before you buy.</p>
-          <p class="proof-callout-copy">
-            See the tested Chrome paths, packaged Mac app QA, export-review scope, and current store status.
-          </p>
-        </div>
-        <div class="link-row">
-          <button class="button button-secondary" type="button" data-proof-open>
-            View Proof Summary
-          </button>
-        </div>
-      </div>
+
+      <section class="feature-list" aria-label="Key features">
+        <h2>Key features</h2>
+        <ul>
+          <li>Native macOS SwiftUI experience</li>
+          <li>Select individual ChatGPT responses</li>
+          <li>Rearrange response order before export</li>
+          <li>Edit the generated Markdown directly</li>
+          <li>Beautiful Markdown preview window</li>
+          <li>LaTeX normalization for math-heavy content</li>
+          <li>Export to Markdown via MarkEdit</li>
+        </ul>
+      </section>
     </section>
 
-    <section class="section" id="specs">
-      <div class="section-heading">
-        <p class="eyebrow">Technical Specifications</p>
-        <h2>Browser capture, response selection, preview control, and Markdown export.</h2>
+    <section class="tab-panel" id="technical-specification" aria-labelledby="spec-title">
+      <div class="panel-header compact">
+        <p class="kicker">System behavior</p>
+        <h1 id="spec-title">Technical Specification</h1>
       </div>
-      <div class="feature-grid">
-        <article>
-          <h3>Workspace</h3>
-          <p>Review Chrome windows, tabs, responses, preview, and export controls in one native Mac app surface.</p>
-        </article>
-        <article>
-          <h3>Response Selection</h3>
-          <p>Choose the answers that belong in the final document and leave duplicates or drafts out of the export.</p>
-        </article>
-        <article>
-          <h3>Post-Export Review</h3>
-          <p>Inspect the generated Markdown immediately so structure problems can be caught before the file is reused.</p>
-        </article>
-        <article>
-          <h3>Diagnostics</h3>
-          <p>Use diagnostics and export state to understand what was selected, reviewed, and handed off.</p>
-        </article>
-        <article>
-          <h3>Markdown Handoff</h3>
-          <p>Open the result in a Markdown-centered workflow after the in-app review pass.</p>
-        </article>
-        <article>
-          <h3>Quick Preview</h3>
-          <p>Check selected output quickly before deciding whether it belongs in the exported Markdown.</p>
-        </article>
-      </div>
-    </section>
 
-    <section class="section section-buy section-accent" id="buy">
-      <div class="section-heading">
-        <p class="eyebrow">Buy</p>
-        <h2>Buy GPT-MD direct from the Med School Outsider store.</h2>
-      </div>
-      <div class="pricing-card">
-        <div>
-          <p class="pricing-label">Personal License</p>
-          <h3 class="pricing-price">HK$88</h3>
-          <p class="pricing-note">One-time purchase for GPT-MD.</p>
-          <ul class="pricing-list">
-            <li>Native macOS app for ChatGPT project output</li>
-            <li>Response selection before export</li>
-            <li>Markdown preview and editing before handoff</li>
-            <li>Math-to-LaTeX cleanup when it improves the document</li>
-            <li>Export path for Markdown-centered writing</li>
+      <div class="spec-layout">
+        <section class="spec-box">
+          <h2>Platform</h2>
+          <dl class="spec-table">
+            <div><dt>OS</dt><dd>macOS</dd></div>
+            <div><dt>App type</dt><dd>Native macOS app</dd></div>
+            <div><dt>Framework</dt><dd>SwiftUI</dd></div>
+            <div><dt>Browser target</dt><dd>Google Chrome</dd></div>
+            <div><dt>Export target</dt><dd>Markdown via MarkEdit</dd></div>
+          </dl>
+        </section>
+
+        <section class="spec-box">
+          <h2>Core workflow</h2>
+          <ol class="numbered-list">
+            <li>GPT-MD reads supported ChatGPT tabs from Google Chrome.</li>
+            <li>User selects target windows, tabs, and responses.</li>
+            <li>Selected responses can be rearranged and edited.</li>
+            <li>GPT-MD generates a Markdown preview.</li>
+            <li>Optional LaTeX normalization can be applied.</li>
+            <li>Final Markdown is exported/opened in MarkEdit.</li>
+          </ol>
+        </section>
+
+        <section class="spec-box wide">
+          <h2>Required permissions</h2>
+          <div class="permission-grid">
+            <article>
+              <h3>macOS Automation</h3>
+              <p>GPT-MD requires macOS Automation permission to control/read Google Chrome.</p>
+              <p class="path-line">System Settings -> Privacy &amp; Security -> Automation -> enable GPT-MD under Google Chrome</p>
+            </article>
+            <article>
+              <h3>Chrome Apple Events JavaScript</h3>
+              <p>For the normal Chrome extraction path, Chrome must allow JavaScript from Apple Events.</p>
+              <p class="path-line">Google Chrome -> View -> Developer -> Allow JavaScript from Apple Events</p>
+              <p class="error-line">If disabled, Chrome may return: "Executing JavaScript through AppleScript is turned off."</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="spec-box">
+          <h2>Required user state</h2>
+          <ul>
+            <li>User must be signed in to ChatGPT in Google Chrome.</li>
+            <li>Target ChatGPT tab must already be open.</li>
+            <li>MarkEdit must be installed for the intended export workflow.</li>
           </ul>
-        </div>
-        <div class="pricing-actions">
-          <div>
-            <p class="pricing-support">
-              The real checkout is live at <a href="https://medout.lemonsqueezy.com/checkout/buy/40174261-ca0c-464d-b044-39bebae435b0" target="_blank" rel="noreferrer">medout.lemonsqueezy.com/checkout/buy/40174261-ca0c-464d-b044-39bebae435b0</a>.
-            </p>
-            <p class="pricing-support">
-              Support email: <a href="mailto:worldpresident1030@gmail.com">worldpresident1030@gmail.com</a>.
-            </p>
-          </div>
-          <div class="final-call">
-            <a class="button button-primary" href="https://medout.lemonsqueezy.com/checkout/buy/40174261-ca0c-464d-b044-39bebae435b0" target="_blank" rel="noreferrer">
-              Buy HK$88 GPT-MD
-            </a>
-            <a class="button button-secondary" href="./privacy.html">Read Privacy</a>
-          </div>
-        </div>
+        </section>
+
+        <section class="spec-box">
+          <h2>Optional managed Chrome mode</h2>
+          <p>GPT-MD can also use a managed Chrome path with:</p>
+          <ul>
+            <li>separate Chrome profile</li>
+            <li>remote debugging</li>
+            <li>independent ChatGPT sign-in state</li>
+          </ul>
+          <p>This can help when the normal Chrome Apple Events path is unavailable or unreliable.</p>
+        </section>
+
+        <section class="spec-box">
+          <h2>Not required</h2>
+          <ul>
+            <li>No Chrome extension</li>
+            <li>No GPT-MD cloud account</li>
+            <li>No Accessibility permission currently required</li>
+          </ul>
+        </section>
+
+        <section class="spec-box">
+          <h2>Output</h2>
+          <ul>
+            <li>Markdown document</li>
+            <li>Edited/rearranged response sequence</li>
+            <li>Optional LaTeX-normalized math notation</li>
+            <li>Open/export handoff to MarkEdit</li>
+          </ul>
+        </section>
       </div>
     </section>
 
-    <section class="section section-last">
-      <div class="section-heading">
-        <p class="eyebrow">Legal</p>
-        <h2>Privacy, terms, and proof stay close to the product claim.</h2>
+    <section class="tab-panel" id="sales-support" aria-labelledby="sales-title">
+      <div class="panel-header compact">
+        <p class="kicker">Purchase and help</p>
+        <h1 id="sales-title">Sales &amp; Support</h1>
       </div>
-      <div class="legal-grid">
-        <article class="legal-card">
-          <h3>Privacy</h3>
-          <p>Local processing, supported browser metadata, diagnostics, and third-party checkout are documented in the policy draft.</p>
-          <a href="./privacy.html">Open Privacy Policy</a>
-        </article>
-        <article class="legal-card">
-          <h3>Terms</h3>
-          <p>Sale terms cover the software license, delivery, compatibility, refunds, and prohibited use in the source draft.</p>
-          <a href="./terms.html">Open Terms of Sale</a>
-        </article>
-        <article class="legal-card">
-          <h3>Proof</h3>
-          <p>The proof page summarizes the launch-readiness evidence behind the export workflow.</p>
-          <a href="./export-benchmarking.html">Open Proof</a>
-        </article>
-        <article class="legal-card">
-          <h3>EULA</h3>
-          <p>The license terms describe permitted app use, restrictions, ownership, and compatibility boundaries.</p>
-          <a href="./eula.html">Open EULA</a>
-        </article>
+
+      <div class="sales-grid">
+        <section class="spec-box purchase-box">
+          <h2>Get GPT-MD</h2>
+          <p>GPT-MD is available as a paid macOS app.</p>
+          <a class="button" href="https://medout.lemonsqueezy.com/checkout/buy/40174261-ca0c-464d-b044-39bebae435b0" target="_blank" rel="noreferrer">Buy / Download GPT-MD</a>
+        </section>
+
+        <section class="spec-box">
+          <h2>Requirements before purchase</h2>
+          <ul>
+            <li>macOS</li>
+            <li>Google Chrome</li>
+            <li>ChatGPT signed in through Chrome</li>
+            <li>Target ChatGPT tab open</li>
+            <li>MarkEdit installed for Markdown export</li>
+            <li>macOS Automation permission allowed for GPT-MD -> Google Chrome</li>
+            <li>Chrome setting enabled: View -> Developer -> Allow JavaScript from Apple Events</li>
+          </ul>
+        </section>
+
+        <section class="spec-box legal-links">
+          <h2>License &amp; legal</h2>
+          <a class="button secondary" href="./terms.html" target="_blank" rel="noreferrer">View Terms</a>
+          <a class="button secondary" href="./privacy.html" target="_blank" rel="noreferrer">View Privacy Policy</a>
+          <a class="button secondary" href="./eula.html" target="_blank" rel="noreferrer">View EULA</a>
+        </section>
+
+        <section class="spec-box">
+          <h2>Technical support</h2>
+          <p>For setup issues, permission problems, or export failures:</p>
+          <p class="support-email"><a href="mailto:worldpresident1030@gmail.com" target="_blank" rel="noreferrer">worldpresident1030@gmail.com</a></p>
+          <p>When contacting support, include:</p>
+          <ul>
+            <li>macOS version</li>
+            <li>Chrome version</li>
+            <li>GPT-MD version</li>
+            <li>whether normal Chrome or managed Chrome mode was used</li>
+            <li>screenshot or exact error message</li>
+            <li>whether MarkEdit is installed</li>
+          </ul>
+        </section>
       </div>
-      <footer class="site-footer">
-        <p>GPT-MD public site repo for Med School Outsider. Support email: <a href="mailto:worldpresident1030@gmail.com">worldpresident1030@gmail.com</a>.</p>
-      </footer>
+
+      <section class="setup-table-wrap" aria-label="Common setup issues">
+        <h2>Common setup issues</h2>
+        <table class="setup-table">
+          <thead>
+            <tr>
+              <th>Issue</th>
+              <th>Check</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Chrome cannot be read</td>
+              <td>Enable macOS Automation permission</td>
+            </tr>
+            <tr>
+              <td>JavaScript AppleScript error</td>
+              <td>Enable JavaScript from Apple Events in Chrome</td>
+            </tr>
+            <tr>
+              <td>No ChatGPT tab found</td>
+              <td>Open ChatGPT in Chrome and sign in</td>
+            </tr>
+            <tr>
+              <td>Export does not open</td>
+              <td>Install MarkEdit</td>
+            </tr>
+            <tr>
+              <td>Managed Chrome shows logged out</td>
+              <td>Sign in to ChatGPT in the managed Chrome window</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
     </section>
   </main>
-  <dialog class="proof-modal" id="proof-modal" aria-labelledby="proof-modal-title">
-    <div class="proof-modal-shell">
-      <div class="proof-modal-header">
-        <div>
-          <p class="eyebrow">Proof</p>
-          <h2 id="proof-modal-title">The current checks support a narrow claim.</h2>
-        </div>
-        <button class="proof-modal-close" type="button" data-proof-close aria-label="Close proof overview">
-          Close
-        </button>
-      </div>
-      <p class="proof-modal-copy">
-        GPT-MD is tested around one buyer workflow: collect ChatGPT project output,
-        choose the responses that matter, preview Markdown, and export from the Mac app.
-      </p>
-      <div class="proof-modal-grid" aria-label="GPT-MD proof summary">
-        <article>
-          <strong>11/11</strong>
-          <span>Timed unit suite passed in the commercial QA sweep.</span>
-        </article>
-        <article>
-          <strong>3 Chrome paths</strong>
-          <span>Managed Chrome, normal Chrome, and managed Canary extraction passed.</span>
-        </article>
-        <article>
-          <strong>39/39</strong>
-          <span>Packaged app-surface QA passed against the rebuilt Mac app.</span>
-        </article>
-        <article>
-          <strong>Live store</strong>
-          <span>The HK$88 Lemon checkout is published with current GPT-MD media.</span>
-        </article>
-      </div>
-      <div class="proof-modal-scope">
-        <div>
-          <h3>Covered</h3>
-          <p>Supported ChatGPT project capture, response selection, preview, export, and direct-store delivery.</p>
-        </div>
-        <div>
-          <h3>Outside the claim</h3>
-          <p>Cloud sync, generic scraping, team wiki workflows, and automatic writing without review.</p>
-        </div>
-      </div>
-      <div class="proof-modal-footer">
-        <a class="button button-primary" href="./export-benchmarking.html">
-          Open Full Proof
-        </a>
-        <button class="button button-secondary" type="button" data-proof-close>
-          Close
-        </button>
-      </div>
-    </div>
-  </dialog>
-  <script>
-    (function () {
-      const dialog = document.getElementById("proof-modal");
-      const openButtons = document.querySelectorAll("[data-proof-open]");
-      const closeButtons = document.querySelectorAll("[data-proof-close]");
-      if (!dialog) return;
 
-      function openProof() {
-        if (typeof dialog.showModal === "function") {
-          dialog.showModal();
-          document.body.classList.add("modal-open");
-        } else {
-          window.location.href = "./export-benchmarking.html";
-        }
-      }
-
-      function closeProof() {
-        dialog.close();
-        document.body.classList.remove("modal-open");
-      }
-
-      openButtons.forEach((button) => {
-        button.addEventListener("click", openProof);
-      });
-
-      closeButtons.forEach((button) => {
-        button.addEventListener("click", closeProof);
-      });
-
-      dialog.addEventListener("click", (event) => {
-        const rect = dialog.getBoundingClientRect();
-        const inside =
-          rect.top <= event.clientY &&
-          event.clientY <= rect.top + rect.height &&
-          rect.left <= event.clientX &&
-          event.clientX <= rect.left + rect.width;
-        if (!inside) {
-          closeProof();
-        }
-      });
-
-      dialog.addEventListener("close", () => {
-        document.body.classList.remove("modal-open");
-      });
-    }());
-  </script>
+  <footer class="site-footer">
+    <span>GPT-MD</span>
+    <nav aria-label="Legal">
+      <a href="./terms.html" target="_blank" rel="noreferrer">Terms</a>
+      <a href="./privacy.html" target="_blank" rel="noreferrer">Privacy</a>
+      <a href="./eula.html" target="_blank" rel="noreferrer">EULA</a>
+      <a href="mailto:worldpresident1030@gmail.com" target="_blank" rel="noreferrer">Support</a>
+    </nav>
+  </footer>
 </body>
 </html>

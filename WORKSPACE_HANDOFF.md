@@ -34,11 +34,16 @@ Updated: 2026-04-28 21:29 CEST
 - copy/image alignment commit `75a655c` makes Specs text-only, limits homepage images to five GPT-MD generated/real app assets, and rewrites captions so they describe exactly what the image is: real app capture, generated workflow visual, or generated App Store composition
 - `export-benchmarking.html` is now a buyer-facing proof page instead of an internal QA memo: it states the current checks, scope, weak-fit cases, live store state, and App Store Connect as the next proof slice
 - the homepage proof popup is now a compact summary modal with four proof facts and scope boundaries; it no longer embeds the full proof page in an iframe
+- the homepage now uses a McMaster-Carr-inspired three-tab catalogue structure only: Introduction, Technical Specification, and Sales & Support
+- `site.css` now carries the compact tabbed catalogue visual system; `index.html` no longer preserves the old What/Why/Advantage/Workflow/Proof/Specs/Buy section model
+- legal routes remain present at `terms.html`, `privacy.html`, and `eula.html`; the draft file `/Users/siumanshermanchan/Downloads/GPTMD Website Draft.md` had enough concrete legal content to replace the previous EULA placeholder and expand Terms/Privacy, while omitting unresolved bracketed fields
+- all public pages now include cross-page navigation, and non-anchor page/support links open in a new tab; the homepage tab anchors remain same-page controls
+- the public palette now reads white/cool grey overall while retaining the yellow McMaster-style top banner
 
 ## Left To Do
 
-- keep the live GPT-MD checkout URL, `HK$88` price, and support email synchronized with site copy and app metadata
-- no required deployment work remains for the proof-page and proof-modal refresh; content commit `552aa94` and metadata-ignore commit `ae4ed61` are pushed to `medschooloutsider/gpt-md-site`
+- no required local site placeholder remains for the current three-tab GPT-MD site update
+- publish/deploy the current local site changes when ready; the older proof-page commits `552aa94` and `ae4ed61` are already pushed to `medschooloutsider/gpt-md-site`
 
 ## Waiting On
 
@@ -63,6 +68,9 @@ Updated: 2026-04-28 21:29 CEST
 - 2026-04-24 asset correction: direct live HTML/URL checks after commit `57a4a7a` confirmed no `specs/`, `showcase/routing`, `showcase/markdown`, or `thymus` image references remain; all 11 remaining homepage image URLs return HTTP 200. Fresh browser screenshot was not captured because the previous CDP lane on `127.0.0.1:59947` was no longer open.
 - 2026-04-24 copy/image alignment: subagent audits classified safe assets and image-copy fit; after commit `75a655c`, GitHub Pages rebuilt and live parser checks confirmed 5 homepage images, all under `site-assets/generated/`, no PDF/thymus/spec/showcase bad refs, all image URLs HTTP 200, and zero `MarkEdit`/`PDF` text mentions on the homepage.
 - 2026-04-28 proof refresh: `git diff --check` passed; local HTML asset-reference check returned `missing []` for `index.html` and `export-benchmarking.html`; local browser screenshots were captured at `site_visual_review/gpt-md-proof-page-redesign-1440.png`, `gpt-md-proof-page-redesign-390.png`, `gpt-md-proof-modal-redesign-1440.png`, and `gpt-md-proof-modal-redesign-390.png`; modal verification confirmed it opens and contains no iframe. GitHub Pages served the new live proof page copy at `https://medschooloutsider.github.io/gpt-md-site/export-benchmarking.html` after content commit `552aa94`.
+- 2026-04-29 three-tab rewrite: coordination, master-plan, and scope gates passed; `git diff --check` passed; static link/reference checks returned `missing []` for `index.html`, `terms.html`, `privacy.html`, and `eula.html`; grep found none of the old homepage section labels or internal/unpublished terms in the rewritten public pages; local Playwright served `http://127.0.0.1:8765/index.html` and rendered 1440px desktop plus 390px mobile without obvious overlap.
+- 2026-04-29 legal/nav/palette follow-up: `git diff --check` passed; static link/reference checks returned no missing local links for `index.html`, `terms.html`, `privacy.html`, and `eula.html`; target checks found no non-anchor links lacking `target="_blank"`; grep found no unresolved `[Date]`, `[Your legal...]`, `[choose...]`, `Full policy text`, or draft/process wording; local Playwright rendered the cooler white/grey homepage at 1440px and 390px plus the expanded EULA page with cross-page navigation.
+- 2026-04-29 buy-link wiring: the `Buy / Download GPT-MD` button now opens the live GPT-MD Lemon Squeezy checkout URL `https://medout.lemonsqueezy.com/checkout/buy/40174261-ca0c-464d-b044-39bebae435b0` in a new tab.
 
 ## Relevant Handoff Or Contract Files
 
