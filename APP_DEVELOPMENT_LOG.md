@@ -1,6 +1,6 @@
 # App Development Log
 
-Updated: 2026-04-29 12:10 CEST
+Updated: 2026-05-02 23:05 CEST
 
 ## Entries
 
@@ -20,3 +20,4 @@ Updated: 2026-04-29 12:10 CEST
 - 2026-04-29 02:12 CEST | gpt-md-buy-link-wiring | Replaced the placeholder `Buy / Download GPT-MD` CTA with the recorded live GPT-MD Lemon Squeezy checkout URL `https://medout.lemonsqueezy.com/checkout/buy/40174261-ca0c-464d-b044-39bebae435b0` and removed the placeholder button label styling.
 - 2026-04-29 12:10 CEST | gpt-md-gallery-assets | Classified the four `12_02_* PM` selected images as GPT-MD assets, copied them into `site-assets/gallery/`, and added a captionless image-only gallery to the Introduction panel. Validation passed `git diff --check`, local link/image reference checks, new-tab target checks, and local Playwright render verification with four gallery images and no horizontal overflow.
 - 2026-04-29 12:10 CEST | gpt-md-gallery-upscale-organization | Replaced the first-pass gallery copies with exact 2880x1800 PNGs under `site-assets/gallery/gpt-md/` using numbered descriptive filenames and updated the homepage image references.
+- 2026-05-02 23:05 CEST | gpt-md-minimal-site-polish | Polished the public static site with a calmer native-system typography stack, lighter header/tab/card treatment, proof-page styling, fixed image dimensions, lazy/async image decoding, and `.DS_Store` ignore coverage. Removed external Google font requests from public pages. Validation passed `git diff --check`, local HTML reference checks, and local HTTP renders for `index.html` and `export-benchmarking.html`; commit `c909744` was pushed to `medschooloutsider/gpt-md-site`.

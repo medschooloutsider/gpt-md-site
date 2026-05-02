@@ -1,6 +1,6 @@
 # Workspace Handoff
 
-Updated: 2026-04-28 21:29 CEST
+Updated: 2026-05-02 23:05 CEST
 
 ## Lane
 
@@ -39,11 +39,13 @@ Updated: 2026-04-28 21:29 CEST
 - legal routes remain present at `terms.html`, `privacy.html`, and `eula.html`; the draft file `/Users/siumanshermanchan/Downloads/GPTMD Website Draft.md` had enough concrete legal content to replace the previous EULA placeholder and expand Terms/Privacy, while omitting unresolved bracketed fields
 - all public pages now include cross-page navigation, and non-anchor page/support links open in a new tab; the homepage tab anchors remain same-page controls
 - the public palette now reads white/cool grey overall while retaining the yellow McMaster-style top banner
+- public pages now use the native system font stack instead of Google-hosted fonts; `site.css` carries the calmer premium/minimal treatment for tabs, cards, gallery images, and proof-page components; gallery/proof images have explicit dimensions plus lazy/async decoding
 
 ## Left To Do
 
 - no required local site placeholder remains for the current three-tab GPT-MD site update
-- publish/deploy the current local site changes when ready; the older proof-page commits `552aa94` and `ae4ed61` are already pushed to `medschooloutsider/gpt-md-site`
+- no required local site placeholder remains for the current GPT-MD public site polish
+- GitHub Pages may still need a short rebuild window after the pushed `main` revision
 
 ## Waiting On
 
@@ -72,6 +74,7 @@ Updated: 2026-04-28 21:29 CEST
 - 2026-04-29 legal/nav/palette follow-up: `git diff --check` passed; static link/reference checks returned no missing local links for `index.html`, `terms.html`, `privacy.html`, and `eula.html`; target checks found no non-anchor links lacking `target="_blank"`; grep found no unresolved `[Date]`, `[Your legal...]`, `[choose...]`, `Full policy text`, or draft/process wording; local Playwright rendered the cooler white/grey homepage at 1440px and 390px plus the expanded EULA page with cross-page navigation.
 - 2026-04-29 buy-link wiring: the `Buy / Download GPT-MD` button now opens the live GPT-MD Lemon Squeezy checkout URL `https://medout.lemonsqueezy.com/checkout/buy/40174261-ca0c-464d-b044-39bebae435b0` in a new tab.
 - 2026-04-29 gallery update: the four selected `12_02_* PM` images were identified as GPT-MD images and added as a no-title/no-caption gallery under the Introduction panel. Final gallery assets are exact 2880x1800 PNGs under `site-assets/gallery/gpt-md/` with numbered descriptive filenames. Local checks confirmed four gallery images, no missing references, and no horizontal overflow.
+- 2026-05-02 minimal site polish: `git diff --check` passed; local HTML reference check across GPT-MD and PDF-MD site pages returned no missing local refs; local HTTP renders returned `index.html` and `export-benchmarking.html`; external Google font refs were removed from public pages. Pushed commit `c909744` to `medschooloutsider/gpt-md-site`.
 
 ## Relevant Handoff Or Contract Files
 
