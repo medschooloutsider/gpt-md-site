@@ -1,108 +1,38 @@
-# Epidemiology and Biostatistics Study Export
+# Case-Control Study OR Export
 
-## Dataset setup
+Source conversation: Case-Control Study OR
 
-The diabetes dataset loaded correctly. The main issue was column-name mismatch.
+## Recognize the study design
 
-R is case-sensitive:
+This is a case-control outbreak investigation, so the association measure is the odds ratio rather than the risk ratio.
 
-- `patients$Age` works
-- `patients$age` does not work
-- `patients$BMI` works
-- `patients$bmi` does not work
+The exercise uses 26 cases and 26 controls from the same hotel population and asks for one 2 x 2 table per food eaten at lunch.
 
-The diabetes-status variable is `Outcome`, not `diabetes`.
+Formula:
 
-## Corrected inspection code
+OR = (a d) / (b c)
 
-```r
-nrow(patients)
-ncol(patients)
-names(patients)
-str(patients)
-head(patients)
-```
+where a and b are exposed and unexposed cases, while c and d are exposed and unexposed controls.
 
-## Descriptive statistics
+## Calculate each food odds ratio
 
-```r
-mean(patients$Age, na.rm = TRUE)
-median(patients$BMI, na.rm = TRUE)
-max(patients$Glucose, na.rm = TRUE)
-min(patients$BloodPressure, na.rm = TRUE)
-range(patients$BMI, na.rm = TRUE)
-quantile(patients$BMI, 0.25, na.rm = TRUE)
-```
+| Food | Cases ate | Cases did not eat | Controls ate | Controls did not eat | Odds ratio |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Pasta with meat sauce | 25 | 1 | 18 | 8 | 11.11 |
+| Grilled steak | 23 | 3 | 18 | 8 | 3.41 |
+| Russian salad | 10 | 16 | 5 | 21 | 2.63 |
+| Tiramisu | 7 | 19 | 3 | 23 | 2.82 |
 
-## Group summaries
+Example for pasta with meat sauce:
 
-```r
-table(patients$Outcome)
-sum(patients$Outcome == 1, na.rm = TRUE)
-tapply(patients$BMI, patients$Outcome, mean, na.rm = TRUE)
-tapply(patients$Age, patients$Outcome, mean, na.rm = TRUE)
-```
+OR = (25 x 8) / (1 x 18) = 200 / 18 = 11.11
 
-In this dataset:
+## Write the submission-ready conclusion
 
-- `Outcome = 0` means non-diabetic
-- `Outcome = 1` means diabetic
+Pasta with meat sauce has the highest odds ratio. Its OR is about 11.11, meaning the odds of having eaten it were about 11 times higher in cases than in controls.
 
-## Correlation and plots
+Therefore, pasta with meat sauce is the food most strongly associated with the outbreak and is the most likely vehicle of infection.
 
-```r
-cor(patients$BMI, patients$Glucose, use = "complete.obs")
-plot(patients$BMI, patients$Glucose)
-hist(patients$Age)
-boxplot(BMI ~ Outcome, data = patients)
-```
+Very short final version:
 
-Correlation describes association, not causation. A scatterplot should be checked alongside the correlation value.
-
-## Missing values
-
-Some variables may contain values that are missing or biologically implausible.
-
-High-yield commands:
-
-```r
-is.na(x)
-sum(is.na(x))
-which(is.na(x))
-mean(x, na.rm = TRUE)
-na.omit(dataframe)
-```
-
-Example workflow:
-
-```r
-sum(is.na(patients$BMI))
-which(is.na(patients$BMI))
-mean(patients$BMI, na.rm = TRUE)
-patients_clean <- na.omit(patients)
-mean(patients_clean$BMI)
-```
-
-## Week 7 concepts
-
-This section moves from descriptive statistics toward inferential statistics:
-
-- missing values
-- normal distribution
-- chi-square distribution
-- confidence intervals
-- hypothesis logic
-
-## Study checklist
-
-By the end of this block, you should be able to:
-
-- import a dataset
-- inspect rows, columns, names, and types
-- compute descriptive statistics
-- interpret correlations
-- make scatterplots, histograms, and boxplots
-- detect missing values
-- ignore or remove missing data appropriately
-- explain why distributions matter
-- describe the basic logic of hypothesis testing
+Because this is a case-control study, I constructed a 2 x 2 table for each food and calculated the odds ratio. Pasta with meat sauce had the highest odds ratio, so it is the most likely source of the outbreak.

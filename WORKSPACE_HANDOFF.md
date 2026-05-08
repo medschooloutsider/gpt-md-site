@@ -1,6 +1,6 @@
 # Workspace Handoff
 
-Updated: 2026-05-08 02:38 CEST
+Updated: 2026-05-08 13:52 CEST
 
 ## Lane
 
@@ -44,13 +44,14 @@ Updated: 2026-05-08 02:38 CEST
 - the Sales & Support purchase box now includes the live GPT-MD App Store listing `https://apps.apple.com/app/gpt-md/id6763401931` as the primary new-tab CTA, with Lemon retained as `Buy direct`
 - `site-assets/sample-output.md` and `site-assets/sample-source.txt` are now tracked public artifacts; they must remain tracked while the sample popup references them
 - the generic neurobiology sample has been replaced with a curated epidemiology/biostatistics study export from the user-provided ChatGPT conversation, sanitized to exclude raw lecture-slide paste, names, emails, and course-source text
+- the static GPT-MD sample has been replaced with a three-panel interactive workbench based on the user-provided `Case-Control Study OR` shared ChatGPT conversation: left transcript popup, middle editable/reorderable response emulator, and right live Markdown export preview; `site-assets/sample-conversation.md`, `site-assets/sample-source.txt`, and `site-assets/sample-output.md` are the public sample artifacts
 
 ## Left To Do
 
 - no required local site placeholder remains for the current three-tab GPT-MD site update
 - no required local site placeholder remains for the current GPT-MD public site polish
-- GitHub Pages may still need a short rebuild window after the pushed `main` revision
-- next useful launch slice is live GitHub Pages verification after the epidemiology/biostatistics sample replacement is pushed
+- GitHub Pages may still need a short rebuild window after the next pushed `main` revision
+- next useful launch slice is live GitHub Pages verification after the interactive case-control sample replacement is pushed
 
 ## Waiting On
 
@@ -83,6 +84,7 @@ Updated: 2026-05-08 02:38 CEST
 - 2026-05-08 sample/App Store CTA update: `git diff --check` passed; local HTML/reference checks found no missing refs; Playwright verified the GPT-MD App Store link appears once, opens with `target="_blank"`, verified the `Sample` section, rendered Markdown preview, close-button behavior, and no desktop/mobile horizontal overflow. Screenshot: `/tmp/gpt-md-sample-appstore-390.png`.
 - 2026-05-08 sample artifact tracking: direct live HTTP checks returned 200 for `site-assets/sample-output.md` and `site-assets/sample-source.txt`; live Playwright verified the Markdown popup renders and closes after the files were tracked.
 - 2026-05-08 epidemiology/biostatistics sample replacement: `git diff --check` passed; stale/private-text grep found no `Neurobiology`, `Synaptic`, lecturer/source names, emails, or raw slide markers in the public sample files; local HTML/reference checks found no missing refs; Playwright verified sample text, rendered Markdown popup, close-button behavior, mobile image aspect ratio, and no desktop/mobile horizontal overflow. Screenshots: `/tmp/gpt-md-epibiostat-sample-1440.png`, `/tmp/gpt-md-epibiostat-sample-390-fixed.png`.
+- 2026-05-08 interactive case-control sample: coordination, master-plan, and scope gates passed; `git diff --check`, HTML parse, local reference checks, and stale/private-text grep passed; Playwright verified the transcript modal renders a Markdown table, the response Down and Reset controls update the live export, console warnings/errors are zero, and desktop/mobile no-overflow metrics hold (`scrollWidth == clientWidth` at 1440px and 390px). Screenshots: `gpt-md-interactive-sample-1440-reset.png` and `gpt-md-interactive-sample-390.png`.
 
 ## Relevant Handoff Or Contract Files
 

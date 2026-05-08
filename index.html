@@ -12,7 +12,7 @@
   <meta property="og:description" content="Select, rearrange, edit, and export ChatGPT responses as Markdown.">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/png" href="./favicon.png?v=20260423a">
-  <link rel="stylesheet" href="./site.css?v=20260508a">
+  <link rel="stylesheet" href="./site.css?v=20260508b">
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
@@ -85,65 +85,47 @@
           <h2 id="sample-title">Sample</h2>
         </div>
 
-        <div class="file-grid">
-          <a
-            class="file-card"
-            href="./site-assets/sample-source.txt"
-            data-preview-title="Source text"
-            data-preview-url="./site-assets/sample-source.txt"
-          >
-            <strong>Source text</strong>
-            <span>Selected ChatGPT study-response excerpt before Markdown export.</span>
-          </a>
-          <a
-            class="file-card"
-            href="./site-assets/sample-output.md"
-            data-preview-title="Markdown output"
-            data-preview-url="./site-assets/sample-output.md"
-          >
-            <strong>Markdown output</strong>
-            <span>Cleaned epidemiology and biostatistics study notes.</span>
-          </a>
-        </div>
+        <div class="sample-workbench" aria-label="Interactive GPT-MD sample">
+          <article class="sample-panel sample-source-panel">
+            <p class="kicker">Left</p>
+            <h3>ChatGPT conversation</h3>
+            <a
+              class="file-card sample-open-card"
+              href="./site-assets/sample-conversation.md"
+              data-preview-title="ChatGPT conversation"
+              data-preview-url="./site-assets/sample-conversation.md"
+            >
+              <strong>Open transcript</strong>
+              <span>Case-control study odds-ratio conversation used for this sample.</span>
+            </a>
+          </article>
 
-        <div class="proof-strip sample-proof-strip">
-          <img
-            src="./site-assets/gallery/gpt-md/04-export-to-markedit.png"
-            width="2880"
-            height="1800"
-            loading="lazy"
-            decoding="async"
-            alt="GPT-MD export preview opened in MarkEdit."
-          >
-          <div class="proof-strip-copy">
-            <h3>Markdown output</h3>
-            <pre class="sample-output"># Epidemiology and Biostatistics Study Export
+          <article class="sample-panel sample-builder-panel">
+            <div class="sample-panel-head">
+              <div>
+                <p class="kicker">Middle</p>
+                <h3>GPT-MD emulator</h3>
+              </div>
+              <button class="small-button" type="button" data-sample-reset>Reset</button>
+            </div>
+            <div class="response-list" id="sample-response-list"></div>
+          </article>
 
-## Dataset setup
-
-The diabetes dataset loaded correctly. The main issue was column-name mismatch.
-
-R is case-sensitive:
-
-- `patients$Age` works
-- `patients$age` does not work
-- `patients$BMI` works
-- `patients$bmi` does not work
-
-The diabetes-status variable is `Outcome`, not `diabetes`.
-
-## Missing values
-
-High-yield commands:
-
-```r
-is.na(x)
-sum(is.na(x))
-which(is.na(x))
-mean(x, na.rm = TRUE)
-na.omit(dataframe)
-```</pre>
-          </div>
+          <article class="sample-panel sample-export-panel">
+            <div class="sample-panel-head">
+              <div>
+                <p class="kicker">Right</p>
+                <h3>Resulting Markdown</h3>
+              </div>
+              <a
+                class="small-button"
+                href="./site-assets/sample-output.md"
+                target="_blank"
+                rel="noreferrer"
+              >Open file</a>
+            </div>
+            <pre class="sample-output export-output" id="sample-export-output" aria-live="polite"></pre>
+          </article>
         </div>
       </section>
     </section>
@@ -394,10 +376,20 @@ na.omit(dataframe)
           paragraph = [];
         }
 
-        lines.forEach((line) => {
+        function parseTableLine(line) {
+          const trimmed = line.trim();
+          if (!trimmed.startsWith("|") || !trimmed.endsWith("|")) {
+            return null;
+          }
+          return trimmed.slice(1, -1).split("|").map((cell) => cell.trim());
+        }
+
+        for (let index = 0; index < lines.length; index += 1) {
+          const line = lines[index];
           const trimmed = line.trim();
           const heading = /^(#{1,6})\s+(.+)$/.exec(trimmed);
           const listItem = /^-\s+(.+)$/.exec(trimmed);
+          const tableCells = parseTableLine(line);
 
           if (!trimmed) {
             flushParagraph();
@@ -405,13 +397,25 @@ na.omit(dataframe)
             flushParagraph();
             const level = Math.min(heading[1].length, 4);
             blocks.push(`<h${level}>${inlineMarkdown(heading[2])}</h${level}>`);
+          } else if (tableCells) {
+            flushParagraph();
+            const rows = [tableCells];
+            while (index + 1 < lines.length && parseTableLine(lines[index + 1])) {
+              index += 1;
+              rows.push(parseTableLine(lines[index]));
+            }
+            const filteredRows = rows.filter((cells) => !cells.every((cell) => /^:?-{3,}:?$/.test(cell)));
+            const head = filteredRows.shift() || [];
+            const headerHTML = head.map((cell) => `<th>${inlineMarkdown(cell)}</th>`).join("");
+            const rowsHTML = filteredRows.map((cells) => `<tr>${cells.map((cell) => `<td>${inlineMarkdown(cell)}</td>`).join("")}</tr>`).join("");
+            blocks.push(`<div class="md-table-wrap"><table><thead><tr>${headerHTML}</tr></thead><tbody>${rowsHTML}</tbody></table></div>`);
           } else if (listItem) {
             flushParagraph();
             blocks.push(`<p class="md-list-item">${inlineMarkdown(listItem[1])}</p>`);
           } else {
             paragraph.push(line);
           }
-        });
+        }
 
         flushParagraph();
         return blocks.join("\n");
@@ -535,6 +539,36 @@ na.omit(dataframe)
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
       font-size: 0.92em;
     }
+
+    .md-table-wrap {
+      overflow-x: auto;
+      margin: 1rem 0;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.94rem;
+    }
+
+    th,
+    td {
+      padding: 0.55rem 0.65rem;
+      border-bottom: 1px solid var(--rule);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--green-soft);
+      color: var(--green);
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
   </style>
 </head>
 <body>
@@ -592,6 +626,141 @@ na.omit(dataframe)
           lastTrigger.focus();
         }
       }
+
+      const sampleSeed = [
+        {
+          title: "Recognize the study design",
+          enabled: true,
+          body: [
+            "## Recognize the study design",
+            "",
+            "This is a case-control outbreak investigation, so the association measure is the odds ratio rather than the risk ratio.",
+            "",
+            "The exercise uses 26 cases and 26 controls from the same hotel population and asks for one 2 x 2 table per food eaten at lunch.",
+            "",
+            "Formula:",
+            "",
+            "OR = (a d) / (b c)",
+            "",
+            "where a and b are exposed and unexposed cases, while c and d are exposed and unexposed controls."
+          ].join("\n")
+        },
+        {
+          title: "Calculate each food odds ratio",
+          enabled: true,
+          body: [
+            "## Calculate each food odds ratio",
+            "",
+            "| Food | Cases ate | Cases did not eat | Controls ate | Controls did not eat | Odds ratio |",
+            "| --- | ---: | ---: | ---: | ---: | ---: |",
+            "| Pasta with meat sauce | 25 | 1 | 18 | 8 | 11.11 |",
+            "| Grilled steak | 23 | 3 | 18 | 8 | 3.41 |",
+            "| Russian salad | 10 | 16 | 5 | 21 | 2.63 |",
+            "| Tiramisu | 7 | 19 | 3 | 23 | 2.82 |",
+            "",
+            "Example for pasta with meat sauce:",
+            "",
+            "OR = (25 x 8) / (1 x 18) = 200 / 18 = 11.11"
+          ].join("\n")
+        },
+        {
+          title: "Write the submission-ready conclusion",
+          enabled: true,
+          body: [
+            "## Write the submission-ready conclusion",
+            "",
+            "Pasta with meat sauce has the highest odds ratio. Its OR is about 11.11, meaning the odds of having eaten it were about 11 times higher in cases than in controls.",
+            "",
+            "Therefore, pasta with meat sauce is the food most strongly associated with the outbreak and is the most likely vehicle of infection.",
+            "",
+            "Very short final version:",
+            "",
+            "Because this is a case-control study, I constructed a 2 x 2 table for each food and calculated the odds ratio. Pasta with meat sauce had the highest odds ratio, so it is the most likely source of the outbreak."
+          ].join("\n")
+        }
+      ];
+
+      const sampleList = document.getElementById("sample-response-list");
+      const sampleOutput = document.getElementById("sample-export-output");
+      const sampleReset = document.querySelector("[data-sample-reset]");
+      let sampleItems = sampleSeed.map((item) => ({ ...item }));
+
+      function buildSampleMarkdown() {
+        const selected = sampleItems.filter((item) => item.enabled);
+
+        if (!selected.length) {
+          return "# Case-Control Study OR Export\n\nNo responses selected.";
+        }
+
+        return [
+          "# Case-Control Study OR Export",
+          "",
+          "Source conversation: Case-Control Study OR",
+          "",
+          ...selected.flatMap((item) => [item.body.trim(), ""])
+        ].join("\n").trim() + "\n";
+      }
+
+      function renderSample() {
+        if (!sampleList || !sampleOutput) {
+          return;
+        }
+
+        sampleList.innerHTML = "";
+        sampleItems.forEach((item, index) => {
+          const row = document.createElement("section");
+          row.className = "response-card";
+          row.innerHTML = `
+            <div class="response-card-head">
+              <label>
+                <input type="checkbox" ${item.enabled ? "checked" : ""}>
+                <span>${escapeHTML(item.title)}</span>
+              </label>
+              <div class="response-actions">
+                <button type="button" data-move="up" ${index === 0 ? "disabled" : ""}>Up</button>
+                <button type="button" data-move="down" ${index === sampleItems.length - 1 ? "disabled" : ""}>Down</button>
+              </div>
+            </div>
+            <textarea rows="8" spellcheck="true">${escapeHTML(item.body)}</textarea>
+          `;
+
+          const checkbox = row.querySelector("input");
+          const textarea = row.querySelector("textarea");
+          checkbox.addEventListener("change", () => {
+            item.enabled = checkbox.checked;
+            sampleOutput.textContent = buildSampleMarkdown();
+          });
+          textarea.addEventListener("input", () => {
+            item.body = textarea.value;
+            sampleOutput.textContent = buildSampleMarkdown();
+          });
+          row.querySelectorAll("[data-move]").forEach((button) => {
+            button.addEventListener("click", () => {
+              const direction = button.dataset.move === "up" ? -1 : 1;
+              const target = index + direction;
+              if (target < 0 || target >= sampleItems.length) {
+                return;
+              }
+              const [moved] = sampleItems.splice(index, 1);
+              sampleItems.splice(target, 0, moved);
+              renderSample();
+            });
+          });
+
+          sampleList.appendChild(row);
+        });
+
+        sampleOutput.textContent = buildSampleMarkdown();
+      }
+
+      if (sampleReset) {
+        sampleReset.addEventListener("click", () => {
+          sampleItems = sampleSeed.map((item) => ({ ...item }));
+          renderSample();
+        });
+      }
+
+      renderSample();
 
       cards.forEach((card) => {
         card.addEventListener("click", (event) => {

@@ -1,81 +1,32 @@
 Representative ChatGPT response excerpt
 
-Topic: Epidemiology and Biostatistics study notes
-Context: A medical student is turning long ChatGPT explanations and R code into a cleaner study document.
+Topic: Case-control study odds ratio
+Context: A medical student is turning a long ChatGPT explanation into a cleaner epidemiology answer.
 
-What went wrong
+Study design
 
-Your dataset loaded correctly. The problem is that your column names are capitalized, but your code used lowercase names.
+This is a case-control outbreak investigation. The appropriate measure of association is the odds ratio, not the risk ratio.
 
-Your real variable names are:
+The exercise gives 26 cases and 26 controls from the same hotel population and asks for 2 x 2 tables for foods eaten at lunch.
 
-Pregnancies
-Glucose
-BloodPressure
-SkinThickness
-Insulin
-BMI
-DiabetesPedigreeFunction
-Age
-Outcome
+Formula
 
-R is case-sensitive, so these are different:
+OR = (a d) / (b c)
 
-- patients$Age works
-- patients$age does not work
-- patients$BMI works
-- patients$bmi does not work
+where:
 
-Outcome is your diabetes-status variable. There is no diabetes column.
+- a = exposed cases
+- b = unexposed cases
+- c = exposed controls
+- d = unexposed controls
 
-Use this corrected code
+Food-specific results
 
-# Inspect
-nrow(patients)
-ncol(patients)
-names(patients)
-str(patients)
-head(patients)
+Pasta with meat sauce: cases 25/1, controls 18/8, OR = 11.11
+Grilled steak: cases 23/3, controls 18/8, OR = 3.41
+Russian salad: cases 10/16, controls 5/21, OR = 2.63
+Tiramisu: cases 7/19, controls 3/23, OR = 2.82
 
-# Basic summaries
-mean(patients$Age, na.rm = TRUE)
-median(patients$BMI, na.rm = TRUE)
-max(patients$Glucose, na.rm = TRUE)
-min(patients$BloodPressure, na.rm = TRUE)
-range(patients$BMI, na.rm = TRUE)
-quantile(patients$BMI, 0.25, na.rm = TRUE)
+Conclusion
 
-# Group summaries
-table(patients$Outcome)
-sum(patients$Outcome == 1, na.rm = TRUE)
-tapply(patients$BMI, patients$Outcome, mean, na.rm = TRUE)
-tapply(patients$Age, patients$Outcome, mean, na.rm = TRUE)
-
-# Correlations and plots
-cor(patients$BMI, patients$Glucose, use = "complete.obs")
-plot(patients$BMI, patients$Glucose)
-hist(patients$Age)
-boxplot(BMI ~ Outcome, data = patients)
-
-Missing values
-
-Some biological variables can contain zero or missing values that distort calculations.
-For example, BMI = 0, BloodPressure = 0, or Glucose = 0 may need checking.
-
-Useful commands:
-
-is.na(x)
-sum(is.na(x))
-which(is.na(x))
-mean(x, na.rm = TRUE)
-na.omit(dataframe)
-
-Week 7 concepts
-
-The new section moves from descriptive statistics toward inferential statistics:
-
-- missing values
-- normal distribution
-- chi-square distribution
-- confidence intervals
-- hypothesis logic
+Pasta with meat sauce has the highest odds ratio. It is the food most strongly associated with the outbreak and is the most likely vehicle of infection.
