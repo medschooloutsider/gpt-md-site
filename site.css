@@ -599,6 +599,7 @@ li + li {
 .proof-strip img {
   display: block;
   width: 100%;
+  height: auto;
   border: 1px solid var(--rule);
   border-radius: 8px;
 }

@@ -1,15 +1,81 @@
-Neurobiology Reading Pack
+Representative ChatGPT response excerpt
 
-Section 4. Synaptic Transmission
+Topic: Epidemiology and Biostatistics study notes
+Context: A medical student is turning long ChatGPT explanations and R code into a cleaner study document.
 
-The synapse is the junction where one neuron communicates with another cell.
-Electrical signals arriving at the presynaptic terminal trigger neurotransmitter release.
-Those molecules cross the synaptic cleft and bind receptors on the postsynaptic membrane.
+What went wrong
 
-Key ideas:
-- information transfer depends on release, diffusion, and receptor binding
-- synapses can be excitatory or inhibitory
-- synaptic strength can change over time
+Your dataset loaded correctly. The problem is that your column names are capitalized, but your code used lowercase names.
 
-Example question:
-How does neurotransmitter release alter the probability of postsynaptic firing?
+Your real variable names are:
+
+Pregnancies
+Glucose
+BloodPressure
+SkinThickness
+Insulin
+BMI
+DiabetesPedigreeFunction
+Age
+Outcome
+
+R is case-sensitive, so these are different:
+
+- patients$Age works
+- patients$age does not work
+- patients$BMI works
+- patients$bmi does not work
+
+Outcome is your diabetes-status variable. There is no diabetes column.
+
+Use this corrected code
+
+# Inspect
+nrow(patients)
+ncol(patients)
+names(patients)
+str(patients)
+head(patients)
+
+# Basic summaries
+mean(patients$Age, na.rm = TRUE)
+median(patients$BMI, na.rm = TRUE)
+max(patients$Glucose, na.rm = TRUE)
+min(patients$BloodPressure, na.rm = TRUE)
+range(patients$BMI, na.rm = TRUE)
+quantile(patients$BMI, 0.25, na.rm = TRUE)
+
+# Group summaries
+table(patients$Outcome)
+sum(patients$Outcome == 1, na.rm = TRUE)
+tapply(patients$BMI, patients$Outcome, mean, na.rm = TRUE)
+tapply(patients$Age, patients$Outcome, mean, na.rm = TRUE)
+
+# Correlations and plots
+cor(patients$BMI, patients$Glucose, use = "complete.obs")
+plot(patients$BMI, patients$Glucose)
+hist(patients$Age)
+boxplot(BMI ~ Outcome, data = patients)
+
+Missing values
+
+Some biological variables can contain zero or missing values that distort calculations.
+For example, BMI = 0, BloodPressure = 0, or Glucose = 0 may need checking.
+
+Useful commands:
+
+is.na(x)
+sum(is.na(x))
+which(is.na(x))
+mean(x, na.rm = TRUE)
+na.omit(dataframe)
+
+Week 7 concepts
+
+The new section moves from descriptive statistics toward inferential statistics:
+
+- missing values
+- normal distribution
+- chi-square distribution
+- confidence intervals
+- hypothesis logic

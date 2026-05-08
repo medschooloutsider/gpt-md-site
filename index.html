@@ -93,7 +93,7 @@
             data-preview-url="./site-assets/sample-source.txt"
           >
             <strong>Source text</strong>
-            <span>Representative ChatGPT response content before Markdown export.</span>
+            <span>Selected ChatGPT study-response excerpt before Markdown export.</span>
           </a>
           <a
             class="file-card"
@@ -102,7 +102,7 @@
             data-preview-url="./site-assets/sample-output.md"
           >
             <strong>Markdown output</strong>
-            <span>Generated Markdown after GPT-MD structuring.</span>
+            <span>Cleaned epidemiology and biostatistics study notes.</span>
           </a>
         </div>
 
@@ -117,19 +117,32 @@
           >
           <div class="proof-strip-copy">
             <h3>Markdown output</h3>
-            <pre class="sample-output"># Neurobiology Reading Pack
+            <pre class="sample-output"># Epidemiology and Biostatistics Study Export
 
-## Section 4. Synaptic Transmission
+## Dataset setup
 
-The synapse is the junction where one neuron communicates with another cell.
-Electrical signals arriving at the presynaptic terminal trigger neurotransmitter release.
-Those molecules cross the synaptic cleft and bind receptors on the postsynaptic membrane.
+The diabetes dataset loaded correctly. The main issue was column-name mismatch.
 
-### Key ideas
+R is case-sensitive:
 
-- information transfer depends on release, diffusion, and receptor binding
-- synapses can be excitatory or inhibitory
-- synaptic strength can change over time</pre>
+- `patients$Age` works
+- `patients$age` does not work
+- `patients$BMI` works
+- `patients$bmi` does not work
+
+The diabetes-status variable is `Outcome`, not `diabetes`.
+
+## Missing values
+
+High-yield commands:
+
+```r
+is.na(x)
+sum(is.na(x))
+which(is.na(x))
+mean(x, na.rm = TRUE)
+na.omit(dataframe)
+```</pre>
           </div>
         </div>
       </section>
