@@ -8,8 +8,6 @@ site-assets/demo-export/
 site-assets/screenshots/
 site-assets/specs/
 site-assets/messy-sample.pdf
-site-assets/sample-output.md
-site-assets/sample-source.txt
 site-assets/showcase/*
 !site-assets/showcase/
 !site-assets/showcase/gpt-md-source-clean.png
