@@ -12,7 +12,7 @@
   <meta property="og:description" content="Select, rearrange, edit, and export ChatGPT responses as Markdown.">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/png" href="./favicon.png?v=20260423a">
-  <link rel="stylesheet" href="./site.css?v=20260507a">
+  <link rel="stylesheet" href="./site.css?v=20260508a">
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
@@ -78,6 +78,60 @@
         <img src="./site-assets/gallery/gpt-md/02-edit-before-export.png" width="2880" height="1800" loading="lazy" decoding="async" alt="GPT-MD editing Markdown before export.">
         <img src="./site-assets/gallery/gpt-md/03-chrome-chatgpt-sessions.png" width="2880" height="1800" loading="lazy" decoding="async" alt="GPT-MD working with Chrome ChatGPT sessions.">
         <img src="./site-assets/gallery/gpt-md/04-export-to-markedit.png" width="2880" height="1800" loading="lazy" decoding="async" alt="GPT-MD exporting Markdown to MarkEdit.">
+      </section>
+
+      <section class="feature-list product-sample" id="sample" aria-labelledby="sample-title">
+        <div class="section-heading">
+          <h2 id="sample-title">Sample</h2>
+        </div>
+
+        <div class="file-grid">
+          <a
+            class="file-card"
+            href="./site-assets/sample-source.txt"
+            data-preview-title="Source text"
+            data-preview-url="./site-assets/sample-source.txt"
+          >
+            <strong>Source text</strong>
+            <span>Representative ChatGPT response content before Markdown export.</span>
+          </a>
+          <a
+            class="file-card"
+            href="./site-assets/sample-output.md"
+            data-preview-title="Markdown output"
+            data-preview-url="./site-assets/sample-output.md"
+          >
+            <strong>Markdown output</strong>
+            <span>Generated Markdown after GPT-MD structuring.</span>
+          </a>
+        </div>
+
+        <div class="proof-strip sample-proof-strip">
+          <img
+            src="./site-assets/gallery/gpt-md/04-export-to-markedit.png"
+            width="2880"
+            height="1800"
+            loading="lazy"
+            decoding="async"
+            alt="GPT-MD export preview opened in MarkEdit."
+          >
+          <div class="proof-strip-copy">
+            <h3>Markdown output</h3>
+            <pre class="sample-output"># Neurobiology Reading Pack
+
+## Section 4. Synaptic Transmission
+
+The synapse is the junction where one neuron communicates with another cell.
+Electrical signals arriving at the presynaptic terminal trigger neurotransmitter release.
+Those molecules cross the synaptic cleft and bind receptors on the postsynaptic membrane.
+
+### Key ideas
+
+- information transfer depends on release, diffusion, and receptor binding
+- synapses can be excitatory or inhibitory
+- synaptic strength can change over time</pre>
+          </div>
+        </div>
       </section>
     </section>
 
@@ -179,7 +233,11 @@
         <section class="spec-box purchase-box">
           <h2>Get GPT-MD</h2>
           <p>GPT-MD is available as a paid macOS app.</p>
-          <a class="button" href="https://medout.lemonsqueezy.com/checkout/buy/40174261-ca0c-464d-b044-39bebae435b0" target="_blank" rel="noreferrer">Buy / Download GPT-MD</a>
+          <p><a href="#sample">Inspect the sample export first</a>, then decide whether the workflow fits your ChatGPT notes.</p>
+          <div class="purchase-actions">
+            <a class="button" href="https://apps.apple.com/app/gpt-md/id6763401931" target="_blank" rel="noreferrer">View on App Store</a>
+            <a class="button secondary" href="https://medout.lemonsqueezy.com/checkout/buy/40174261-ca0c-464d-b044-39bebae435b0" target="_blank" rel="noreferrer">Buy direct</a>
+          </div>
         </section>
 
         <section class="spec-box">
@@ -265,5 +323,280 @@
       <a href="mailto:worldpresident1030@gmail.com" target="_blank" rel="noreferrer">Email support</a>
     </nav>
   </footer>
+
+  <div class="file-modal" id="file-preview-modal" hidden>
+    <div class="file-modal-backdrop" data-modal-close></div>
+    <section class="file-modal-panel" role="dialog" aria-modal="true" aria-labelledby="file-preview-title">
+      <header class="file-modal-header">
+        <div>
+          <p class="kicker">Sample file preview</p>
+          <h2 id="file-preview-title">Sample file</h2>
+        </div>
+        <button class="modal-close" type="button" data-modal-close aria-label="Close file preview">Close</button>
+      </header>
+      <iframe class="file-preview-frame" id="file-preview-frame" title="Sample file preview"></iframe>
+      <footer class="file-modal-footer">
+        <a class="button secondary" id="file-preview-open" href="#" target="_blank" rel="noreferrer">Open in new tab</a>
+        <a class="button" href="#sales-support" data-modal-close>Go to purchase and support</a>
+      </footer>
+    </section>
+  </div>
+
+  <script>
+    (() => {
+      const modal = document.getElementById("file-preview-modal");
+      const title = document.getElementById("file-preview-title");
+      const frame = document.getElementById("file-preview-frame");
+      const openLink = document.getElementById("file-preview-open");
+      const cards = document.querySelectorAll("[data-preview-url]");
+      let lastTrigger = null;
+      let previewRequest = 0;
+
+      function escapeHTML(value) {
+        return value.replace(/[&<>"']/g, (character) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          "\"": "&quot;",
+          "'": "&#39;"
+        })[character]);
+      }
+
+      function inlineMarkdown(value) {
+        return escapeHTML(value)
+          .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+          .replace(/`([^`]+)`/g, "<code>$1</code>");
+      }
+
+      function markdownToHTML(markdown) {
+        const lines = markdown.replace(/\r\n/g, "\n").split("\n");
+        const blocks = [];
+        let paragraph = [];
+
+        function flushParagraph() {
+          if (!paragraph.length) {
+            return;
+          }
+          blocks.push(`<p>${inlineMarkdown(paragraph.join(" "))}</p>`);
+          paragraph = [];
+        }
+
+        lines.forEach((line) => {
+          const trimmed = line.trim();
+          const heading = /^(#{1,6})\s+(.+)$/.exec(trimmed);
+          const listItem = /^-\s+(.+)$/.exec(trimmed);
+
+          if (!trimmed) {
+            flushParagraph();
+          } else if (heading) {
+            flushParagraph();
+            const level = Math.min(heading[1].length, 4);
+            blocks.push(`<h${level}>${inlineMarkdown(heading[2])}</h${level}>`);
+          } else if (listItem) {
+            flushParagraph();
+            blocks.push(`<p class="md-list-item">${inlineMarkdown(listItem[1])}</p>`);
+          } else {
+            paragraph.push(line);
+          }
+        });
+
+        flushParagraph();
+        return blocks.join("\n");
+      }
+
+      function previewDocument(content, mode) {
+        const body = mode === "markdown"
+          ? markdownToHTML(content)
+          : `<pre>${escapeHTML(content)}</pre>`;
+
+        return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      color-scheme: light;
+      --page: #f7f7f4;
+      --paper: #ffffff;
+      --ink: #181c1b;
+      --muted: #5c6462;
+      --rule: #d7dcda;
+      --green: #204d3d;
+      --green-soft: #eef4f1;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.62;
+    }
+
+    main {
+      width: min(860px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 3rem;
+    }
+
+    article {
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      padding: clamp(1rem, 3vw, 2rem);
+      border-radius: 8px;
+      box-shadow: 0 14px 38px rgba(24, 28, 27, 0.07);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin: 1.45em 0 0.55em;
+      color: var(--ink);
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+
+    h1:first-child,
+    h2:first-child,
+    h3:first-child,
+    h4:first-child {
+      margin-top: 0;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      padding-bottom: 0.45rem;
+      border-bottom: 1px solid var(--rule);
+      font-size: 1.25rem;
+    }
+
+    h3,
+    h4 {
+      color: var(--green);
+      font-size: 1rem;
+    }
+
+    p {
+      margin: 0 0 0.85rem;
+      color: #303736;
+    }
+
+    .md-list-item {
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    .md-list-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 0.35rem;
+      height: 0.35rem;
+      background: var(--green);
+      border-radius: 50%;
+    }
+
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      color: #303736;
+      font: 0.98rem/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    code {
+      border: 1px solid var(--rule);
+      background: #fbfbf8;
+      padding: 0.08rem 0.25rem;
+      border-radius: 4px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <article>${body}</article>
+  </main>
+</body>
+</html>`;
+      }
+
+      function loadingPreviewDocument() {
+        return "<!doctype html><html><body style=\"margin:0;background:#f7f7f4;color:#181c1b;font:16px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\"><main style=\"padding:2rem;\">Loading preview...</main></body></html>";
+      }
+
+      function openPreview(trigger) {
+        const previewURL = trigger.dataset.previewUrl;
+        const requestID = ++previewRequest;
+        lastTrigger = trigger;
+        title.textContent = trigger.dataset.previewTitle || "Sample file";
+        openLink.href = previewURL;
+        modal.hidden = false;
+        document.body.classList.add("modal-open");
+        frame.srcdoc = loadingPreviewDocument();
+        frame.removeAttribute("src");
+
+        fetch(previewURL)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Preview unavailable");
+            }
+            return response.text();
+          })
+          .then((content) => {
+            if (requestID === previewRequest) {
+              const mode = previewURL.endsWith(".md") ? "markdown" : "plain";
+              frame.srcdoc = previewDocument(content, mode);
+            }
+          })
+          .catch(() => {
+            if (requestID === previewRequest) {
+              frame.srcdoc = "<!doctype html><html><body style=\"margin:0;background:#f7f7f4;color:#181c1b;font:16px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\"><main style=\"padding:2rem;\">Preview unavailable. Use Open in new tab.</main></body></html>";
+            }
+          });
+
+        modal.querySelector(".modal-close").focus();
+      }
+
+      function closePreview() {
+        previewRequest += 1;
+        modal.hidden = true;
+        frame.removeAttribute("src");
+        frame.removeAttribute("srcdoc");
+        document.body.classList.remove("modal-open");
+        if (lastTrigger) {
+          lastTrigger.focus();
+        }
+      }
+
+      cards.forEach((card) => {
+        card.addEventListener("click", (event) => {
+          event.preventDefault();
+          openPreview(card);
+        });
+      });
+
+      modal.querySelectorAll("[data-modal-close]").forEach((control) => {
+        control.addEventListener("click", closePreview);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !modal.hidden) {
+          closePreview();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 # Workspace Handoff
 
-Updated: 2026-05-02 23:05 CEST
+Updated: 2026-05-08 02:07 CEST
 
 ## Lane
 
@@ -40,12 +40,15 @@ Updated: 2026-05-02 23:05 CEST
 - all public pages now include cross-page navigation, and non-anchor page/support links open in a new tab; the homepage tab anchors remain same-page controls
 - the public palette now reads white/cool grey overall while retaining the yellow McMaster-style top banner
 - public pages now use the native system font stack instead of Google-hosted fonts; `site.css` carries the calmer premium/minimal treatment for tabs, cards, gallery images, and proof-page components; gallery/proof images have explicit dimensions plus lazy/async decoding
+- the product page now includes a compact `Sample` section using the existing GPT-MD-only neurobiology source/output artifacts, with closeable previews for source text and rendered Markdown output
+- the Sales & Support purchase box now includes the live GPT-MD App Store listing `https://apps.apple.com/app/gpt-md/id6763401931` as the primary new-tab CTA, with Lemon retained as `Buy direct`
 
 ## Left To Do
 
 - no required local site placeholder remains for the current three-tab GPT-MD site update
 - no required local site placeholder remains for the current GPT-MD public site polish
 - GitHub Pages may still need a short rebuild window after the pushed `main` revision
+- next useful launch slice is live GitHub Pages verification after the sample/App Store CTA update is pushed
 
 ## Waiting On
 
@@ -75,6 +78,7 @@ Updated: 2026-05-02 23:05 CEST
 - 2026-04-29 buy-link wiring: the `Buy / Download GPT-MD` button now opens the live GPT-MD Lemon Squeezy checkout URL `https://medout.lemonsqueezy.com/checkout/buy/40174261-ca0c-464d-b044-39bebae435b0` in a new tab.
 - 2026-04-29 gallery update: the four selected `12_02_* PM` images were identified as GPT-MD images and added as a no-title/no-caption gallery under the Introduction panel. Final gallery assets are exact 2880x1800 PNGs under `site-assets/gallery/gpt-md/` with numbered descriptive filenames. Local checks confirmed four gallery images, no missing references, and no horizontal overflow.
 - 2026-05-02 minimal site polish: `git diff --check` passed; local HTML reference check across GPT-MD and PDF-MD site pages returned no missing local refs; local HTTP renders returned `index.html` and `export-benchmarking.html`; external Google font refs were removed from public pages. Pushed commit `c909744` to `medschooloutsider/gpt-md-site`.
+- 2026-05-08 sample/App Store CTA update: `git diff --check` passed; local HTML/reference checks found no missing refs; Playwright verified the GPT-MD App Store link appears once, opens with `target="_blank"`, verified the `Sample` section, rendered Markdown preview, close-button behavior, and no desktop/mobile horizontal overflow. Screenshot: `/tmp/gpt-md-sample-appstore-390.png`.
 
 ## Relevant Handoff Or Contract Files
 
